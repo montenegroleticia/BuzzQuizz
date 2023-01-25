@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Cabeçalho do site */
+header {
+    width: 100vw;
+    height: 69px;
+    background-color: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 13px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+}
+main {
+    width: 1051px;
+}
+/* Criação de novos Quizzes */
+.criacao-quizzes {
+    width: auto;
+    height: 181px;
+    margin-top: 77px;
+    background-color: #FAFAFA;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+h2 {
+    color: #B9B9B9;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    word-break: break-word;
+}
+button {
+    width: 151px;
+    height: 40px;
+    background-color: #FAFAFA;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+    color: #EC362D;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+}
+/* Sessão com todos os Quizzes */
+section {
+    margin-top: 77px;
+}
+h3 {
+    margin-bottom: 12px;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+.quizzes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+/* Cada Quizz */
+article {
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
+    background-size: 340px 181px;
+    border-radius: 5px;
+}
+/* Não consegui colocar o título do quizz embaixo com position */
+article p {
+    margin-bottom: 7px;
+    margin-left: 18px;
+    word-break: break-word;
+    color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+}
