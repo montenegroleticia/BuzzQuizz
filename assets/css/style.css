@@ -28,6 +28,8 @@ h1 {
 
 main {
     width: 1051px;
+    min-height: 100%;
+    
 }
 
 /* Criação de novos Quizzes */
@@ -73,6 +75,11 @@ button {
 /* Sessão com todos os Quizzes */
 section {
     margin-top: 77px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 1300px;
 }
 
 h3 {
@@ -113,4 +120,110 @@ article p {
     font-weight: 400;
     font-size: 19px;
     line-height: 22px;
+}
+.formulario1{
+    min-height: 825px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border: 2px #000000 solid ;
+}
+span {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    margin-top: 27px;
+    margin-bottom: 12px;
+    margin-left: 17px;
+}
+.span_respostaCorreta{
+    margin-top: 27px;
+    margin-bottom: 14px;
+}
+input {
+    min-width: 564px;
+    min-height: 46px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin-bottom: 14px;
+    margin-left: 17px;
+    margin-right: 20px;
+}
+::placeholder{
+    color:#BABABA;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    margin-top:13px;
+    margin-left: 23px;
+}
+.barra{
+    background-color: transparent;
+    margin-top:7px;
+    margin-bottom: 7px;
+    min-height: 20px;
+    min-width: 600px;
+}
+.formulario2{
+    margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+    min-height: 74px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border: 2px #000000 solid ;
+}
+
+.formulario3{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    min-height: 74px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border: 2px #000000 solid ;
+}
+.formulario2 img{
+  
+    position: relative;
+    top:0px;
+    left:440px;
+    width:26px;
+    Height:23px;
+}
+.formulario3 img{
+    position: relative;
+    top:0px;
+    left:0px;
+    width:26px;
+    Height:23px;
+}
+
+.proseguirParaNiveis{
+    width: 353.91px;
+    height: 54px;
+    margin-top: 81px;
+
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: 
+    #FFF5F4;
 }
