@@ -303,8 +303,10 @@ input {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
+    background-color: royalblue;
 }
 
 .pergunta img {
@@ -315,6 +317,7 @@ input {
 .color {
     background-color: purple;
     margin-bottom: 19px;
+    width: 100%;
     height: 138px;
     display: flex;
     align-items: center;
@@ -380,6 +383,7 @@ input {
     margin-bottom: 22px;
     overflow-y: scroll;
     height: 25vh;
+    width: auto;
 }
 
 .fimQuizz img {
@@ -416,6 +420,7 @@ input {
 
 .flexFim {
     display: flex;
+    background-color: #009C22;
 }
 
 /* FIM PARTE DA TELA 2 */
@@ -425,38 +430,10 @@ input {
     main, .criacao-quizzes {
         width: 700px;
     }
+    /* FIM PARTE DA TELA 1 */
 }
 
-@media (max-width:1100px) {
-
-    /* INICIO PARTE DA TELA 2 */
-    .pergunta {
-        width: 500px;
-        height: 581px;
-    }
-
-    .perguntaMenor {
-        height: auto;
-    }
-
-    .pergunta img {
-        width: 200px;
-        height: auto;
-    }
-
-    .color {
-        height: 100px;
-        font-size: 15px;
-    }
-
-    .fimQuizz {
-        height: auto;
-    }
-    
-    /* FIM PARTE DA TELA 2 */
-}
-
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
 
     /* INICIO PARTE DA TELA 1 */
 
@@ -474,7 +451,7 @@ input {
 
     .pergunta {
         width: 100vw;
-        height: 68vh;
+        height: auto;
     }
 
     .perguntaMenor {
@@ -483,12 +460,12 @@ input {
 
     .pergunta img {
         width: 41vw;
-        height: 15vh;
+        height: auto;
     }
 
     .color {
         width: 85.5vw;
-        height: 89px;
+        min-height: 89px;
     }
 
     .color h1 {
@@ -528,6 +505,10 @@ input {
 
     .voltarInicio {
         font-size: 18px;
+    }
+
+    .flexFim {
+        width:min-content;
     }
 
     /* FIM PARTE DA TELA 2 */
