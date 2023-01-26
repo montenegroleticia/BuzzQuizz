@@ -277,7 +277,7 @@ input {
     width: 100vw;
     height: 22vh;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
-    background-size: 100vw 22vh;
+    background-size: 100vw auto;
     margin: 0;
 }
 
@@ -303,8 +303,10 @@ input {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
+    background-color: royalblue;
 }
 
 .pergunta img {
@@ -315,6 +317,7 @@ input {
 .color {
     background-color: purple;
     margin-bottom: 19px;
+    width: 100%;
     height: 138px;
     display: flex;
     align-items: center;
@@ -364,7 +367,8 @@ input {
 
 .fimQuizz {
     width: 759px;
-    height: 430px;
+    height: auto;
+    overflow: hidden;
 }
 
 .fimColor {
@@ -377,11 +381,14 @@ input {
     color: #484848;
     font-weight: 700;
     margin-bottom: 22px;
+    overflow-y: scroll;
+    height: 25vh;
+    width: auto;
 }
 
 .fimQuizz img {
     width: 364px;
-    height: 273px;
+    height: auto;
     margin-bottom: 22px;
 }
 
@@ -393,6 +400,7 @@ input {
     border-radius: 15px;
     color: #FFF5F4;
     margin-top: 57px;
+    font-size: 21px;
 }
 
 .voltarInicio {
@@ -403,14 +411,16 @@ input {
     margin-top: 16px;
     background-color: #FAFAFA;
     margin-bottom: 85px;
+    font-size: 21px;
 }
 
 .perguntaMenor{
-    height: 350px;
+    height: auto;
 }
 
 .flexFim {
     display: flex;
+    background-color: #009C22;
 }
 
 /* FIM PARTE DA TELA 2 */
@@ -420,37 +430,10 @@ input {
     main, .criacao-quizzes {
         width: 700px;
     }
+    /* FIM PARTE DA TELA 1 */
 }
 
-@media (max-width:1100px) {
-
-    /* INICIO PARTE DA TELA 2 */
-    .pergunta {
-        width: 500px;
-        height: 581px;
-    }
-
-    .perguntaMenor {
-        height: 350px;
-    }
-
-    .pergunta img {
-        width: 200px;
-        height: 150px;
-    }
-
-    .color {
-        height: 100px;
-        font-size: 15px;
-    }
-
-    .fimQuizz {
-        height: 350px;
-    }
-    /* FIM PARTE DA TELA 2 */
-}
-
-@media (max-width: 600px) {
+@media (max-width: 1100px) {
 
     /* INICIO PARTE DA TELA 1 */
 
@@ -468,21 +451,21 @@ input {
 
     .pergunta {
         width: 100vw;
-        height: 68vh;
+        height: auto;
     }
 
     .perguntaMenor {
-        height: 40vh;
+        height: auto;
     }
 
     .pergunta img {
         width: 41vw;
-        height: 15vh;
+        height: auto;
     }
 
     .color {
         width: 85.5vw;
-        height: 89px;
+        min-height: 89px;
     }
 
     .color h1 {
@@ -502,12 +485,12 @@ input {
     }
 
     .fimQuizz {
-        min-height: 73vh;
+        height: auto;
     }
 
     .fimQuizz img {
         width: 85.5vw;
-        height: 34.7vh;
+        height: auto;
     }
 
     .fimQuizz p {
@@ -522,6 +505,10 @@ input {
 
     .voltarInicio {
         font-size: 18px;
+    }
+
+    .flexFim {
+        width:min-content;
     }
 
     /* FIM PARTE DA TELA 2 */
