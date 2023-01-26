@@ -1,3 +1,5 @@
+/* INICIO TELA 1 */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 
 body {
@@ -5,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #FAFAFA;
 }
 
 /* Cabeçalho do site */
@@ -29,7 +32,6 @@ h1 {
 main {
     width: 1051px;
     min-height: 100%;
-    
 }
 
 /* Criação de novos Quizzes */
@@ -121,6 +123,9 @@ article p {
     font-size: 19px;
     line-height: 22px;
 }
+/* FIM TELA 1 */
+
+/* INICIO TELA 3 */
 .formulario1{
     min-height: 825px;
     min-width: 600px;
@@ -226,4 +231,250 @@ input {
     line-height: 25px;
     color: 
     #FFF5F4;
+}
+
+/* FIM TELA 3 */
+
+/* INICIO PARTE DA TELA 2 */
+
+.tituloQuiz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 22vh;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
+    background-size: 100vw 22vh;
+    margin: 0;
+}
+
+.tituloQuiz h1 {
+    font-weight: 400;
+    font-size: 39px;
+    color: #ffffff;
+}
+
+.larguraTotal {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pergunta {
+    width: 759px;
+    height: 676px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 42px;
+}
+
+.pergunta img {
+    width: 330px;
+    height: 175px;
+}
+
+.color {
+    background-color: purple;
+    margin-bottom: 19px;
+    height: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color h1 {
+    font-size: 23px;
+    color: #FFFFFF;
+    font-weight: 700;
+    line-height: 27px;
+}
+
+.flex {
+    display: flex;
+}
+
+.miniContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.miniContainer p {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+    line-height: 24px;
+    margin-top: 8px;
+    margin-bottom: 19px;
+}
+
+.margin {
+    margin-left: 38px;
+}
+
+.efeitoResposta {
+    opacity: 0.3;
+}
+
+.respostaErrada p {
+    color: #FF4B4B;
+}
+
+.respostaCerta p {
+    color: #009C22;
+}
+
+.fimQuizz {
+    width: 759px;
+    height: 430px;
+}
+
+.fimColor {
+    background-color: #EC362D;
+}
+
+.fimQuizz p {
+    margin-left: 21px;
+    font-size: 19px;
+    color: #484848;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.fimQuizz img {
+    width: 364px;
+    height: 273px;
+    margin-bottom: 22px;
+}
+
+.reiniciarQuizz {
+    width: 260px;
+    height: 52px;
+    background-color: #EC362D;
+    border: 0;
+    border-radius: 15px;
+    color: #FFF5F4;
+    margin-top: 57px;
+}
+
+.voltarInicio {
+    width: 219px;
+    height: 44px;
+    color: #818181;
+    border: 0;
+    margin-top: 16px;
+    background-color: #FAFAFA;
+    margin-bottom: 85px;
+}
+
+.perguntaMenor{
+    height: 350px;
+}
+
+.flexFim {
+    display: flex;
+}
+
+/* FIM PARTE DA TELA 2 */
+
+@media (max-width:1100px) {
+
+    /* INICIO PARTE DA TELA 2 */
+    .pergunta {
+        width: 500px;
+        height: 581px;
+    }
+
+    .perguntaMenor {
+        height: 350px;
+    }
+
+    .pergunta img {
+        width: 200px;
+        height: 150px;
+    }
+
+    .color {
+        height: 100px;
+        font-size: 15px;
+    }
+
+    .fimQuizz {
+        height: 350px;
+    }
+    /* FIM PARTE DA TELA 2 */
+}
+
+@media (max-width: 600px) {
+
+    /* INICIO PARTE DA TELA 2 */
+
+    .tituloQuiz h1 {
+        font-size: 2.6vh;
+    }
+
+    .pergunta {
+        width: 100vw;
+        height: 68vh;
+    }
+
+    .perguntaMenor {
+        height: 40vh;
+    }
+
+    .pergunta img {
+        width: 41vw;
+        height: 15vh;
+    }
+
+    .color {
+        width: 85.5vw;
+        height: 89px;
+    }
+
+    .color h1 {
+        font-size: 2.6vh;
+    }
+
+    .margin {
+        margin-left: 3.5vw;
+    }
+
+    .miniContainer p {
+        font-size: 1.8vh;
+    }
+
+    .flexFim {
+        flex-direction: column;
+    }
+
+    .fimQuizz {
+        min-height: 73vh;
+    }
+
+    .fimQuizz img {
+        width: 85.5vw;
+        height: 34.7vh;
+    }
+
+    .fimQuizz p {
+        font-size: 2.3vh;
+    }
+
+    .reiniciarQuizz{
+        font-size: 18px;
+        width: 220px;
+        height: 44px;
+    }
+
+    .voltarInicio {
+        font-size: 18px;
+    }
+
+    /* FIM PARTE DA TELA 2 */
 }
