@@ -9,7 +9,9 @@ body {
     align-items: center;
     background-color: #FAFAFA;
 }
-
+.hide{
+    display: none;
+}
 /* Cabeçalho do site */
 header {
     width: 100vw;
@@ -131,7 +133,7 @@ article p {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    border: 2px #000000 solid ;
+    
 }
 span {
     font-family: 'Roboto', sans-serif;
@@ -165,7 +167,7 @@ input {
     font-size: 19px;
     line-height: 22px;
     margin-top:13px;
-    margin-left: 23px;
+    padding-left: 18px;
 }
 .barra{
     background-color: transparent;
@@ -184,7 +186,7 @@ input {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    border: 2px #000000 solid ;
+    
 }
 
 .formulario3{
@@ -197,7 +199,7 @@ input {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    border: 2px #000000 solid ;
+    
 }
 .formulario2 img{
   
@@ -215,7 +217,7 @@ input {
     Height:23px;
 }
 
-.proseguirParaNiveis{
+.btn_proseguirParaNiveis{
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
@@ -230,7 +232,121 @@ input {
     color: 
     #FFF5F4;
 }
+.formularioNiveis1{
+    min-height: 318px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.formularioNiveis2{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    min-height: 74px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.formularioNiveis2 img {
+    position: relative;
+    top:0px;
+    left:475px;
+    width:26px;
+    Height:23px;
+}
+.formularioNiveis3{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    min-height: 74px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.formularioNiveis3 img {
+    position: relative;
+    top:0px;
+    left:475px;
+    width:26px;
+    Height:23px;
+}
 
+.btn_finalizarCriacaoDeQuizz {
+    width: 353.91px;
+    height: 54px;
+    margin-top: 81px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: 
+    #FFF5F4;
+}
+
+.QuizzCard{
+    
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        width: 500px;
+        height: 266px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
+        background-size: 500px 266px;
+        border-radius: 5px;
+    
+}
+
+.QuizzCard p {
+    margin-bottom: 15px;
+    margin-left: 18px;
+    word-break: break-word;
+    color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+}
+
+
+.btn_AcessarQuizz{
+    width: 222px;
+    height: 44px;
+    margin-top: 30px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: 
+    #FFF5F4;
+}
+.div_voltarAoInicio{
+    margin-top: 15px;
+    width: 220px;
+    height: 44px;
+    background-color: #fafafa;
+    color: 
+    #818181;
+    text-decoration: underline;
+    Font-family: 'Roboto', sans-serif;
+    Font-size: 21px;
+    Line-height: 25px;
+    Line-height: 100%;
+    text-Align: Center;
+    vertical-align: Center;
+}
 /* FIM TELA 3 */
 
 /* INICIO PARTE DA TELA 2 */
@@ -476,3 +592,7 @@ input {
 
     /* FIM PARTE DA TELA 2 */
 }
+
+
+/* INICIO DA RESPONSIDVIDADE TELA 3;
+
