@@ -31,7 +31,6 @@ h1 {
 
 main {
     width: 1051px;
-    min-height: 100%;
 }
 
 /* Criação de novos Quizzes */
@@ -81,7 +80,6 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 1300px;
 }
 
 h3 {
