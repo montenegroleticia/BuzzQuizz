@@ -224,12 +224,12 @@ function processarResultados() {
 
     const tela02 = document.querySelector(".tela02");
 
-    const porcentLevel = Math.round((contadorAcertos/maxPerguntas) * 100);
+    const porcentLevel = Math.round((contadorAcertos / maxPerguntas) * 100);
 
     let tituloLevel, imgLevel, descLevel, indice, maior = 0;
 
     for (let index = 0; index < levels.length; index++) {
-        if(levels[index].minValue <= porcentLevel && levels[index].minValue >= maior)
+        if (levels[index].minValue <= porcentLevel && levels[index].minValue >= maior)
             indice = index;
     }
 

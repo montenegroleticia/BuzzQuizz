@@ -437,7 +437,7 @@ input {
 
 .pergunta {
     width: 759px;
-    height: 676px;
+    height: auto;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 30px;
@@ -446,6 +446,7 @@ input {
     align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
+    overflow: hidden;
 }
 
 .pergunta img {
@@ -486,6 +487,9 @@ input {
     line-height: 24px;
     margin-top: 8px;
     margin-bottom: 19px;
+    word-break: break-all;
+    max-height: 175px;
+    overflow-y: scroll;
 }
 
 .margin {
