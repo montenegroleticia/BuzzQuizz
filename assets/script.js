@@ -12,8 +12,8 @@ function carregarQuizz(resposta) {
             <p>${title}</p>
         </li>`;
         quizz.innerHTML += li;
-        document.getElementById(`${id}`).style.background = 
-        `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+        document.getElementById(`${id}`).style.background =
+            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
     }
 }
 
@@ -35,16 +35,32 @@ function nãoAbriuQuizz(erro) {
     console.log(erro);
 }
 
+function embaralharRespotas(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // exibir quiz selecionado
 function exibirQuizz(selectedQuizz) {
+
     selectedQuizz = selectedQuizz.data;
+
     const main = document.querySelector("main");
+
     main.innerHTML = `<figure class="tituloQuiz">
                         <h1>${selectedQuizz.title}</h1>
                       </figure>`;
 
-    document.querySelector(".tituloQuiz").style.background = 
-    `linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('${selectedQuizz.image})`;
+    document.querySelector(".tituloQuiz").style.background =
+        `linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('${selectedQuizz.image})`;
+
+    embaralharRespotas(selectedQuizz.questions);
+
+    selectedQuizz.questions.forEach(answers => {
+        if()
+    });
 
 }
 
