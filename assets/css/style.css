@@ -10,9 +10,11 @@ body {
     background-color: #FAFAFA;
     box-sizing: border-box;
 }
-.hide{
+
+.hide {
     display: none;
 }
+
 /* Cabeçalho do site */
 header {
     width: 100vw;
@@ -81,11 +83,13 @@ h2 {
 .quizzes-criados {
     margin-top: 77px;
 }
+
 .titulo {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
+
 h3 {
     color: #000000;
     font-family: 'Roboto', sans-serif;
@@ -94,7 +98,11 @@ h3 {
     font-size: 20px;
     line-height: 23px;
 }
+
 .titulo button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 31px;
     height: 30px;
     background-color: #EC362D;
@@ -104,11 +112,13 @@ h3 {
     font-size: 23px;
     margin-left: 17px;
 }
+
 .criados {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
 }
+
 .criados li {
     display: flex;
     align-items: flex-end;
@@ -119,6 +129,7 @@ h3 {
     background-size: 340px 181px;
     border-radius: 5px;
 }
+
 /* Sessão com todos os Quizzes */
 section {
     margin-top: 77px;
@@ -142,7 +153,6 @@ ul li {
     justify-content: flex-start;
     width: 340px;
     height: 181px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
     background-size: 340px 181px;
     border-radius: 5px;
 }
@@ -158,18 +168,20 @@ li p {
     font-size: 19px;
     line-height: 22px;
 }
+
 /* FIM TELA 1 */
 
 /* INICIO TELA 3 */
-.formulario1{
+.formulario1 {
     min-height: 825px;
     min-width: 600px;
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    
+
 }
+
 span {
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -180,10 +192,12 @@ span {
     margin-bottom: 12px;
     margin-left: 17px;
 }
-.span_respostaCorreta{
+
+.span_respostaCorreta {
     margin-top: 27px;
     margin-bottom: 14px;
 }
+
 input {
     min-width: 564px;
     min-height: 46px;
@@ -194,24 +208,27 @@ input {
     margin-left: 17px;
     margin-right: 20px;
 }
-::placeholder{
-    color:#BABABA;
+
+::placeholder {
+    color: #BABABA;
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
     line-height: 22px;
-    margin-top:13px;
+    margin-top: 13px;
     padding-left: 18px;
 }
-.barra{
+
+.barra {
     background-color: transparent;
-    margin-top:7px;
+    margin-top: 7px;
     margin-bottom: 7px;
     min-height: 20px;
     min-width: 600px;
 }
-.formulario2{
+
+.formulario2 {
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -221,10 +238,10 @@ input {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    
+
 }
 
-.formulario3{
+.formulario3 {
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -234,25 +251,27 @@ input {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    
-}
-.formulario2 img{
-  
-    position: relative;
-    top:0px;
-    left:440px;
-    width:26px;
-    Height:23px;
-}
-.formulario3 img{
-    position: relative;
-    top:0px;
-    left:0px;
-    width:26px;
-    Height:23px;
+
 }
 
-.btn_proseguirParaNiveis{
+.formulario2 img {
+
+    position: relative;
+    top: 0px;
+    left: 440px;
+    width: 26px;
+    Height: 23px;
+}
+
+.formulario3 img {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 26px;
+    Height: 23px;
+}
+
+.btn_proseguirParaNiveis {
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
@@ -264,10 +283,11 @@ input {
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
-    color: 
-    #FFF5F4;
+    color:
+        #FFF5F4;
 }
-.formularioNiveis1{
+
+.formularioNiveis1 {
     min-height: 318px;
     min-width: 600px;
     display: flex;
@@ -275,7 +295,8 @@ input {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-.formularioNiveis2{
+
+.formularioNiveis2 {
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -286,14 +307,16 @@ input {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
+
 .formularioNiveis2 img {
     position: relative;
-    top:0px;
-    left:475px;
-    width:26px;
-    Height:23px;
+    top: 0px;
+    left: 475px;
+    width: 26px;
+    Height: 23px;
 }
-.formularioNiveis3{
+
+.formularioNiveis3 {
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -304,12 +327,13 @@ input {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
+
 .formularioNiveis3 img {
     position: relative;
-    top:0px;
-    left:475px;
-    width:26px;
-    Height:23px;
+    top: 0px;
+    left: 475px;
+    width: 26px;
+    Height: 23px;
 }
 
 .btn_finalizarCriacaoDeQuizz {
@@ -323,21 +347,21 @@ input {
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
-    color: 
-    #FFF5F4;
+    color:
+        #FFF5F4;
 }
 
-.QuizzCard{
-    
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-start;
-        width: 500px;
-        height: 266px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
-        background-size: 500px 266px;
-        border-radius: 5px;
-    
+.QuizzCard {
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 500px;
+    height: 266px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
+    background-size: 500px 266px;
+    border-radius: 5px;
+
 }
 
 .QuizzCard p {
@@ -353,7 +377,7 @@ input {
 }
 
 
-.btn_AcessarQuizz{
+.btn_AcessarQuizz {
     width: 222px;
     height: 44px;
     margin-top: 30px;
@@ -364,16 +388,17 @@ input {
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
-    color: 
-    #FFF5F4;
+    color:
+        #FFF5F4;
 }
-.div_voltarAoInicio{
+
+.div_voltarAoInicio {
     margin-top: 15px;
     width: 220px;
     height: 44px;
     background-color: #fafafa;
-    color: 
-    #818181;
+    color:
+        #818181;
     text-decoration: underline;
     Font-family: 'Roboto', sans-serif;
     Font-size: 21px;
@@ -382,6 +407,7 @@ input {
     text-Align: Center;
     vertical-align: Center;
 }
+
 /* FIM TELA 3 */
 
 /* INICIO PARTE DA TELA 2 */
@@ -392,7 +418,6 @@ input {
     justify-content: center;
     width: 100vw;
     height: 22vh;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/44570DA0FF3D8049B04C0DEA0277DBCA17EFFDCDA8E2CFCF5E7616BF0D9213A1/scale?width=1200&aspectRatio=1.78&format=jpeg);
     background-size: 100vw auto;
     margin: 0;
 }
@@ -529,7 +554,7 @@ input {
     font-size: 21px;
 }
 
-.perguntaMenor{
+.perguntaMenor {
     height: auto;
 }
 
@@ -539,11 +564,14 @@ input {
 
 /* FIM PARTE DA TELA 2 */
 
-@media (max-width:1000px){
+@media (max-width:1000px) {
+
     /* INICIO PARTE DA TELA 1 */
-    main, .criacao-quizzes {
+    main,
+    .criacao-quizzes {
         width: 700px;
     }
+
     /* FIM PARTE DA TELA 1 */
 }
 
@@ -551,7 +579,8 @@ input {
 
     /* INICIO PARTE DA TELA 1 */
 
-    main, .criacao-quizzes {
+    main,
+    .criacao-quizzes {
         width: 340px;
     }
 
@@ -611,7 +640,7 @@ input {
         font-size: 2.3vh;
     }
 
-    .reiniciarQuizz{
+    .reiniciarQuizz {
         font-size: 18px;
         width: 220px;
         height: 44px;
@@ -622,7 +651,7 @@ input {
     }
 
     .flexFim {
-        width:min-content;
+        width: min-content;
     }
 
     /* FIM PARTE DA TELA 2 */
