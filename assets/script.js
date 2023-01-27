@@ -1,6 +1,8 @@
 // Obter todos os quizzes
 
-let contadorScroll = 1;
+let contadorScroll = 1, contadorAcertos = 0;
+
+let maxPerguntas, levels;
 
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
@@ -56,6 +58,10 @@ function exibirQuizz(selectedQuizz) {
 
     document.querySelector(".tituloQuiz").style.background =
         `linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('${selectedQuizz.image})`;
+
+
+    maxPerguntas = selectedQuizz.questions.length;
+    levels = selectedQuizz.levels;
 
     for (let index = 0; index < selectedQuizz.questions.length; index++) {
         selectedQuizz.questions[index].answers = embaralharRespotas(selectedQuizz.questions[index].answers);
@@ -156,6 +162,7 @@ function exibirQuizz(selectedQuizz) {
         }
     });
 
+    document.querySelector("header").scrollIntoView(true);
 }
 
 function embaralharRespotas(array) {
@@ -191,26 +198,74 @@ function criarQuizz() {
     const tela03 = document.querySelector(".tela03");
     tela03.classList.remove('hide');
 }
+
 // Intereção tela 03 
-function irParaNiveis(){
+function irParaNiveis() {
     const perguntas = document.querySelector(".perguntas");
     perguntas.classList.add('hide');
     const niveis = document.querySelector(".niveis");
     niveis.classList.remove('hide');
 }
-function quizzFinalizado(){
+
+function quizzFinalizado() {
     const niveis = document.querySelector(".niveis");
     niveis.classList.add('hide');
     const finalizado = document.querySelector(".finalizado");
     finalizado.classList.remove('hide');
 }
-function voltarHome(){
+
+function voltarHome() {
     window.location.reload();
+}
+// fim interação tela 3
+
+function processarResultados() {
+
+    const tela02 = document.querySelector(".tela02");
+
+    const porcentLevel = Math.round((contadorAcertos/maxPerguntas) * 100);
+
+    let tituloLevel, imgLevel, descLevel, indice, maior = 0;
+
+    for (let index = 0; index < levels.length; index++) {
+        if(levels[index].minValue <= porcentLevel && levels[index].minValue >= maior)
+            indice = index;
+    }
+
+    tituloLevel = levels[indice].title;
+    imgLevel = levels[indice].image;
+    descLevel = levels[indice].text;
+
+    tela02.innerHTML +=
+        `<section class="pergunta fimQuizz">
+            <div class="color fimColor">
+                <h1>${porcentLevel}% de acerto: ${tituloLevel}</h1>
+            </div>
+            <div class="flexFim">
+                <img src="${imgLevel}" alt="imagem">
+                <p>${descLevel}</p>
+            </div>
+        </section>
+
+        <button class="reiniciarQuizz">
+            Reiniciar Quizz
+        </button>
+
+        <button class="voltarInicio">
+            Voltar para Home
+        </button>`;
+
+    document.querySelectorAll(".pergunta")[contadorScroll].scrollIntoView(true);
 }
 
 function scroll() {
-    document.querySelectorAll(".pergunta")[contadorScroll].scrollIntoView(true);
-    contadorScroll++;
+    if (contadorScroll < maxPerguntas) {
+        document.querySelectorAll(".pergunta")[contadorScroll].scrollIntoView(true);
+        contadorScroll++;
+    }
+    else {
+        processarResultados();
+    }
 }
 
 function tratarEscolha(resposta) {
@@ -220,6 +275,7 @@ function tratarEscolha(resposta) {
         if (object === resposta && resposta.classList.contains("respostaCerta")) {
             resposta.lastElementChild.style.color = "#009C22"
             resposta.classList.add("impedirClique");
+            contadorAcertos++;
         }
         else if (object === resposta && resposta.classList.contains("respostaErrada")) {
             resposta.lastElementChild.style.color = "#FF4B4B"
