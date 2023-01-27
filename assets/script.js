@@ -46,6 +46,10 @@ function quizzSelecionado(selecionado){
 
 // Criar Quizz
 function criarQuizz() {
+    const tela01 = document.querySelector(".tela01");
+    tela01.classList.add('hide');
+    const tela03 = document.querySelector(".tela03");
+    tela03.classList.remove('hide');
 }
 
 function acharQuiz(id) {
