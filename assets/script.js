@@ -1,8 +1,6 @@
 // Obter todos os quizzes
 
-let contadorScroll = 1, contadorAcertos = 0;
-
-let maxPerguntas, levels;
+let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz;
 
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
@@ -41,9 +39,7 @@ function nãoAbriuQuizz(erro) {
 
 // exibir quiz selecionado
 
-function exibirQuizz(selectedQuizz) {
-
-    selectedQuizz = selectedQuizz.data;
+function exibirQuizz() {
 
     document.querySelector("main").classList.add("larguraTotal");
     document.querySelector(".tela01").classList.add('hide');
@@ -183,11 +179,16 @@ function embaralharRespotas(array) {
     return array;
 }
 
+function sucessoQuizz(selected) {
+    selectedQuizz = selected.data;
+    exibirQuizz();
+}
+
 // Selecionar um quizz específico ao clicar
 function quizzSelecionado(selecionado) {
     const quiz = Number(selecionado.id);
     const promese = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quiz}`);
-    promese.then(exibirQuizz);
+    promese.then(sucessoQuizz);
     promese.catch(nãoAbriuQuizz);
 }
 
@@ -247,11 +248,11 @@ function processarResultados() {
             </div>
         </section>
 
-        <button class="reiniciarQuizz">
+        <button class="reiniciarQuizz" onclick="reinicar()">
             Reiniciar Quizz
         </button>
 
-        <button class="voltarInicio">
+        <button class="voltarInicio" onclick="voltarHome()">
             Voltar para Home
         </button>`;
 
@@ -269,7 +270,7 @@ function scroll() {
 }
 
 function tratarEscolha(resposta) {
-    let arrRespostas = resposta.parentNode.parentNode.querySelectorAll(".miniContainer");
+    arrRespostas = resposta.parentNode.parentNode.querySelectorAll(".miniContainer");
 
     arrRespostas.forEach(object => {
         if (object === resposta && resposta.classList.contains("respostaCerta")) {
@@ -295,4 +296,18 @@ function tratarEscolha(resposta) {
     });
 
     setTimeout(scroll, 2000);
+}
+
+function reinicar() {
+
+    const tela02 = document.querySelector(".tela02");
+
+    tela02.innerHTML = "";
+
+    contadorScroll = 1;
+    contadorAcertos = 0;
+
+    exibirQuizz();
+
+    document.querySelector("header").scrollIntoView(true);
 }
