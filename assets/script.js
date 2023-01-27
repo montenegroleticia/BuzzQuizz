@@ -188,3 +188,19 @@ function criarQuizz() {
     const tela03 = document.querySelector(".tela03");
     tela03.classList.remove('hide');
 }
+// Intereção tela 03 
+function irParaNiveis(){
+    const perguntas = document.querySelector(".perguntas");
+    perguntas.classList.add('hide');
+    const niveis = document.querySelector(".niveis");
+    niveis.classList.remove('hide');
+}
+function quizzFinalizado(){
+    const niveis = document.querySelector(".niveis");
+    niveis.classList.add('hide');
+    const finalizado = document.querySelector(".finalizado");
+    finalizado.classList.remove('hide');
+}
+function voltarHome(){
+    window.location.reload();
+}

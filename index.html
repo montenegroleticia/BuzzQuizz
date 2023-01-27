@@ -57,9 +57,10 @@
         <!-- INICIO TELA 3  -->
         <div class="tela03 hide">
             <section>
-                <h3>Crie suas perguntas</h3>
+                <div class="perguntas" onclick="irParaNiveis()">
+                    <h3>Crie suas perguntas</h3>
 
-                <div class="formulario1 hide ">
+                    <div class="formulario1 hide ">
 
                     <span>Pergunta 1</span>
                     <input type="text" placeholder="Texto da pergunta" />
@@ -83,28 +84,28 @@
                     <input type="text" placeholder="Resposta incorreta 3" />
                     <input type="text" placeholder="URL da imagem 3" />
 
-                </div>
+                    </div>
 
-                <div class="formulario2 hide">
+                    <div class="formulario2 hide">
 
                     <span>Pergunta 2
                         <img src="./assets/midia/Vector.png" alt="">
                     </span>
 
 
-                </div>
-                <div class="formulario2 hide">
+                    </div>
+                    <div class="formulario2 hide">
 
                     <span>Pergunta 3
                         <img src="./assets/midia/Vector.png" alt="">
                     </span>
 
+                    </div>
+                    <button class="btn_proseguirParaNiveis"> Prosseguir pra criar níveis </button>
                 </div>
-                <button class="btn_proseguirParaNiveis"> Prosseguir pra criar níveis </button>
-
                 <div class="barra"></div>
-
-                <div class="formularioNiveis1">
+                <div class="niveis hide" onclick="quizzFinalizado()">
+                    <div class="formularioNiveis1">
 
                     <span>Nível 1</span>
                     <input type="text" id="lvlTittle" placeholder="Título do nível" />
@@ -113,28 +114,27 @@
                     <input type="text" id="lvl_Descript" placeholder="Descrição do nível" />
 
 
-                </div>
-
-                <div class="formularioNiveis2 hide">
+                    </div>
+                    <div class="formularioNiveis2 hide">
                     
                     <span>Nível 2
                         <img src="./assets/midia/Vector.png" alt="">
                     </span>
 
 
-                </div>
-                <div class="formularioNiveis3">
+                    </div>
+                    <div class="formularioNiveis3">
 
                     <span>Nível 3
                         <img src="./assets/midia/Vector.png" alt="">
                     </span>
 
+                    </div>
+                    <button class="btn_finalizarCriacaoDeQuizz"> Finalizar Quizz </button>
                 </div>
-                <button class="btn_finalizarCriacaoDeQuizz"> Finalizar Quizz </button>
-
                 <div class="barra"></div>
             </section>
-            <section class="hide">
+            <section class="finalizado hide">
                 <h3>Seu Quizz está pronto</h3>
 
                 <div class="QuizzCard">
@@ -143,7 +143,7 @@
                 <button class="btn_AcessarQuizz"> Acessar Quizz </button>
 
                 <a>
-                    <div class="div_voltarAoInicio">
+                    <div class="div_voltarAoInicio" onclick="voltarHome()">
                         Voltar pra home
                     </div>
                 </a>
@@ -153,7 +153,7 @@
         <!-- FIM DA TELA 3-->
 
         <!--INICIO TELA 2 -->
-        <div class="tela02 larguraTotal hide">
+        <div class="tela02 hide">
             <section class="pergunta fimQuizz">
                 <div class="color fimColor">
                     <h1>Em qual animal Olho-Tonto Moody transfigurou Malfoy ?</h1>
