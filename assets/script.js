@@ -48,7 +48,6 @@ function exibirQuizz(selectedQuizz) {
 
 }
 
-
 // Selecionar um quizz específico ao clicar
 function quizzSelecionado(selecionado) {
     const quiz = Number(selecionado.id);
