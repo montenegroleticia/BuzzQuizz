@@ -1,5 +1,4 @@
 // Obter todos os quizzes
-
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
@@ -33,24 +32,6 @@ carregarQuizzes();
 // erro ao abrir quiz
 function nãoAbriuQuizz(erro) {
     console.log(erro);
-}
-
-function embaralharRespotas(array) {
-    let m = array.length, t, i;
-
-    // While there remain elements to shuffle…
-    while (m) {
-
-        // Pick a remaining element…
-        i = Math.floor(Math.random() * m--);
-
-        // And swap it with the current element.
-        t = array[m];
-        array[m] = array[i];
-        array[i] = t;
-    }
-
-    return array;
 }
 
 // exibir quiz selecionado
@@ -172,6 +153,24 @@ function exibirQuizz(selectedQuizz) {
         }
     });
 
+}
+
+function embaralharRespotas(array) {
+    let m = array.length, t, i;
+
+    // While there remain elements to shuffle…
+    while (m) {
+
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * m--);
+
+        // And swap it with the current element.
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+    }
+
+    return array;
 }
 
 // Selecionar um quizz específico ao clicar
