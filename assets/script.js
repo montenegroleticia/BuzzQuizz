@@ -1,4 +1,7 @@
 // Obter todos os quizzes
+
+let contadorScroll = 1;
+
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
@@ -68,10 +71,10 @@ function exibirQuizz(selectedQuizz) {
                         </div>`;
 
         function respostaCorreta(element) {
-            if(element.isCorrectAnswer)
-                    res.push('respostaCerta');
-                else
-                    res.push('respostaErrada');
+            if (element.isCorrectAnswer)
+                res.push('respostaCerta');
+            else
+                res.push('respostaErrada');
         }
 
         if (perguntas.answers.length === 2) {
@@ -79,7 +82,7 @@ function exibirQuizz(selectedQuizz) {
             perguntas.answers.forEach(respostaCorreta);
 
             tela02.innerHTML += titulo +
-            `   <div class="flex">
+                `   <div class="flex">
                     <div class="miniContainer ${res[0]}" onclick="tratarEscolha(this)">
                         <img src="${perguntas.answers[0].image}" alt="imagem">
                         <p>${perguntas.answers[0].text}</p>
@@ -94,7 +97,7 @@ function exibirQuizz(selectedQuizz) {
             res = [];
         }
         else if (perguntas.answers.length === 3) {
-            
+
             perguntas.answers.forEach(respostaCorreta);
 
             tela02.innerHTML += titulo;
@@ -125,7 +128,7 @@ function exibirQuizz(selectedQuizz) {
             perguntas.answers.forEach(respostaCorreta);
 
             tela02.innerHTML += titulo +
-            `   <div class="flex">
+                `   <div class="flex">
                     <div>
                         <div class="miniContainer ${res[0]}" onclick="tratarEscolha(this)">
                             <img src="${perguntas.answers[0].image}" alt="imagem">
@@ -148,7 +151,7 @@ function exibirQuizz(selectedQuizz) {
                     </div>
                 </div>
             </section>`
-            
+
             res = [];
         }
     });
@@ -203,4 +206,37 @@ function quizzFinalizado(){
 }
 function voltarHome(){
     window.location.reload();
+}
+
+function scroll() {
+    document.querySelectorAll(".pergunta")[contadorScroll].scrollIntoView(true);
+    contadorScroll++;
+}
+
+function tratarEscolha(resposta) {
+    let arrRespostas = resposta.parentNode.parentNode.querySelectorAll(".miniContainer");
+
+    arrRespostas.forEach(object => {
+        if (object === resposta && resposta.classList.contains("respostaCerta")) {
+            resposta.lastElementChild.style.color = "#009C22"
+            resposta.classList.add("impedirClique");
+        }
+        else if (object === resposta && resposta.classList.contains("respostaErrada")) {
+            resposta.lastElementChild.style.color = "#FF4B4B"
+            resposta.classList.add("impedirClique");
+        }
+        else if (object.classList.contains("respostaCerta")) {
+            object.lastElementChild.style.color = "#009C22"
+            object.classList.add("impedirClique");
+            object.classList.add("efeitoResposta");
+        }
+        else if (object.classList.contains("respostaErrada")) {
+            object.lastElementChild.style.color = "#FF4B4B"
+            object.classList.add("impedirClique");
+            object.classList.add("efeitoResposta");
+        }
+
+    });
+
+    setTimeout(scroll, 2000);
 }

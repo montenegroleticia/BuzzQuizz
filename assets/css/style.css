@@ -276,7 +276,6 @@ input {
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
-
     background: #EC362D;
     border-radius: 15px;
     font-family: 'Roboto', sans-serif;
@@ -284,8 +283,7 @@ input {
     font-weight: 400;
     font-size: 21px;
     line-height: 25px;
-    color:
-        #FFF5F4;
+    color: #FFF5F4;
 }
 
 .formularioNiveis1 {
@@ -498,14 +496,6 @@ input {
     opacity: 0.3;
 }
 
-.pColor0 {
-    color: #FF4B4B;
-}
-
-.pColor1 {
-    color: #009C22;
-}
-
 .fimQuizz {
     width: 759px;
     height: auto;
@@ -557,6 +547,10 @@ input {
 
 .flexFim {
     display: flex;
+}
+
+.impedirClique {
+    pointer-events: none;
 }
 
 /* FIM PARTE DA TELA 2 */
