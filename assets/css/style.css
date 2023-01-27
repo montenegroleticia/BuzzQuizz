@@ -497,11 +497,11 @@ input {
     opacity: 0.3;
 }
 
-.respostaErrada p {
+.pColor0 {
     color: #FF4B4B;
 }
 
-.respostaCerta p {
+.pColor1 {
     color: #009C22;
 }
 
@@ -552,10 +552,6 @@ input {
     background-color: #FAFAFA;
     margin-bottom: 85px;
     font-size: 21px;
-}
-
-.perguntaMenor {
-    height: auto;
 }
 
 .flexFim {
