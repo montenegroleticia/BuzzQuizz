@@ -1,6 +1,18 @@
+let listaQuizzes;
+
+// Tela 01
+const quizz = `
+<li>
+    <p>Título do quizz</p>
+</li>`;
+// Obter quizzes
+function carregarQuizz(resposta) {
+    console.log("foiii");
 // Obter todos os quizzes
 function carregarQuizz(resposta){
     console.log(resposta);
+    listaQuizzes = resposta.data;
+    console.log(listaQuizzes);
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
     for (let index = 0; index < resposta.data.length; index++){
@@ -15,7 +27,7 @@ function carregarQuizz(resposta){
         document.getElementById(`${id}`).style.backgroundImage = `url('${image}')`;
     }
 }
-function naoCarregou(erro){
+function naoCarregou(erro) {
     console.log("ERRO");
     console.log(erro);
 }
@@ -42,5 +54,27 @@ function quizzSelecionado(selecionado){
 }
 
 // Criar Quizz
-function criarQuizz(){
+function criarQuizz() {
+}
+
+carregarQuizzes();
+
+function acharQuiz(id) {
+    id = Number(id);
+    for (let index = 0; index < listaQuizzes.length; index++) {
+        if (listaQuizzes[index].id === id)
+            return listaQuizzes[index];
+    }
+    return null;
+}
+
+function exibirQuizzes(liQuizz) {
+    const quizzExibido = acharQuiz(liQuizz.id);
+    const main = document.querySelector("main");
+    main.innerHTML = `<figure class="tituloQuiz">
+                        <h1>${quizzExibido.title}</h1>
+                      </figure>`;
+
+    document.querySelector(".tituloQuiz").style.backgroundImage = 
+    `url('${quizzExibido.image}')`;
 }

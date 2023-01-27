@@ -422,7 +422,6 @@ input {
     align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
-    background-color: royalblue;
 }
 
 .pergunta img {
@@ -536,7 +535,6 @@ input {
 
 .flexFim {
     display: flex;
-    background-color: #009C22;
 }
 
 /* FIM PARTE DA TELA 2 */
