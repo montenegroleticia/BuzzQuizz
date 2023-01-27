@@ -1,13 +1,4 @@
 let listaQuizzes;
-
-// Tela 01
-const quizz = `
-<li>
-    <p>Título do quizz</p>
-</li>`;
-// Obter quizzes
-function carregarQuizz(resposta) {
-    console.log("foiii");
 // Obter todos os quizzes
 function carregarQuizz(resposta){
     console.log(resposta);
@@ -56,8 +47,6 @@ function quizzSelecionado(selecionado){
 // Criar Quizz
 function criarQuizz() {
 }
-
-carregarQuizzes();
 
 function acharQuiz(id) {
     id = Number(id);
