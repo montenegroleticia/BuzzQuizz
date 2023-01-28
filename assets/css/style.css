@@ -252,27 +252,25 @@ input {
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-
+    
 }
-
-.formulario2 img {
-
+.formulario2 img{
+  
     position: relative;
-    top: 0px;
-    left: 440px;
-    width: 26px;
-    Height: 23px;
+    top:0px;
+    left:440px;
+    width:26px;
+    Height:23px;
 }
-
-.formulario3 img {
+.formulario3 img{
     position: relative;
-    top: 0px;
-    left: 0px;
-    width: 26px;
-    Height: 23px;
+    top:0px;
+    left:440px;
+    width:26px;
+    Height:23px;
 }
 
-.btn_proseguirParaNiveis {
+.btn_prosseguirParaNiveis{
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
@@ -437,7 +435,7 @@ input {
 
 .pergunta {
     width: 759px;
-    height: auto;
+    height: 676px;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 30px;
@@ -446,7 +444,6 @@ input {
     align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
-    overflow: hidden;
 }
 
 .pergunta img {
@@ -487,9 +484,6 @@ input {
     line-height: 24px;
     margin-top: 8px;
     margin-bottom: 19px;
-    word-break: break-all;
-    max-height: 175px;
-    overflow-y: scroll;
 }
 
 .margin {

@@ -51,67 +51,68 @@
                 <h3>Todos os Quizzes</h3>
                 <ul></ul>
             </section>
-        </div>
+        </div> 
+            
         <!-- FIM TELA 1 -->
 
         <!-- INICIO TELA 3  -->
         <div class="tela03 hide">
             <section>
-                <div class="perguntas" onclick="irParaNiveis()">
+                <div class="perguntas" >
                     <h3>Crie suas perguntas</h3>
 
                     <div class="formulario1 hide ">
 
                         <span>Pergunta 1</span>
-                        <input type="text" placeholder="Texto da pergunta" />
+                        <input type="text" class="input_textoPergunta" placeholder="Texto da pergunta" />
                         <input type="text" placeholder="Cor de fundo da pergunta" />
 
                         <span class="span_respostaCorreta">Resposta correta </span>
                         <input type="text" placeholder="Resposta correta" />
-                        <input type="text" placeholder="URL da imagem" />
+                        <input type="text" class="input_URL" placeholder="URL da imagem" />
 
                         <span>Respostas incorretas</span>
                         <input type="text" placeholder="Resposta incorreta 1" />
-                        <input type="text" placeholder="URL da imagem 1" />
+                        <input type="text" class="input_URL" placeholder="URL da imagem 1" />
 
                         <div class="barra"></div>
 
                         <input type="text" placeholder="Resposta incorreta 2" />
-                        <input type="text" placeholder="URL da imagem 2" />
+                        <input type="text" class="input_URL" placeholder="URL da imagem 2" />
 
                         <div class="barra"></div>
 
                         <input type="text" placeholder="Resposta incorreta 3" />
-                        <input type="text" placeholder="URL da imagem 3" />
+                        <input type="text" class="input_URL" placeholder="URL da imagem 3" />
 
                     </div>
 
-                    <div class="formulario2 hide">
+                    <div class="formulario2 ">
 
                         <span>Pergunta 2
-                            <img src="./assets/midia/Vector.png" alt="">
+                            <img src="./assets/midia/Vector.png" id="img_pergunta2" alt="" onclick="criarDivPerguntas(id)">
                         </span>
 
 
                     </div>
-                    <div class="formulario2 hide">
+                    <div class="formulario3 ">
 
                         <span>Pergunta 3
-                            <img src="./assets/midia/Vector.png" alt="">
+                            <img src="./assets/midia/Vector.png" id="img_pergunta3" alt="" onclick="criarDivPerguntas(id)">
                         </span>
 
                     </div>
-                    <button class="btn_proseguirParaNiveis"> Prosseguir pra criar níveis </button>
+                    <button class="btn_prosseguirParaNiveis" onclick="validar_Perguntas()"> Prosseguir pra criar níveis </button>
                 </div>
                 <div class="barra"></div>
                 <div class="niveis hide" onclick="quizzFinalizado()">
                     <div class="formularioNiveis1">
 
                         <span>Nível 1</span>
-                        <input type="text" id="lvlTittle" placeholder="Título do nível" />
-                        <input type="text" id="percentualAcertoMin" placeholder="% de acerto mínima" />
-                        <input type="text" id="URL_img_input" placeholder="URL da imagem do nível" />
-                        <input type="text" id="lvl_Descript" placeholder="Descrição do nível" />
+                        <input type="text" id="nivelTitulo" placeholder="Título do nível" />
+                        <input type="text" id="percentualAcertoMinimo" placeholder="% de acerto mínima" />
+                        <input type="text" id="URL_img_nivel_input" placeholder="URL da imagem do nível" />
+                        <input type="text" id="nivel_Descript" placeholder="Descrição do nível" />
 
 
                     </div>
@@ -123,7 +124,7 @@
 
 
                     </div>
-                    <div class="formularioNiveis3">
+                    <div class="formularioNiveis3 hide">
 
                         <span>Nível 3
                             <img src="./assets/midia/Vector.png" alt="">

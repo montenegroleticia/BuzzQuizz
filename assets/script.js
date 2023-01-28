@@ -1,6 +1,16 @@
 // Obter todos os quizzes
 
-let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz;
+
+let quizz = new Object;
+let formulario1 = document.querySelector(".formulario1");
+let formulario2 = document.querySelector(".formulario2");
+let formulario3 = document.querySelector(".formulario3");
+
+let formularioNiveis1 = document.querySelector(".formularioNiveis1");
+let formularioNiveis2 = document.querySelector(".formularioNiveis2");
+let formularioNiveis3 = document.querySelector(".formularioNiveis3");
+
+let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios,flagCampos2NaoVazios,flagCampos3NaoVazios,flagFormulario2Setado=false,flagFormulario3Setado=false;
 
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
@@ -311,3 +321,227 @@ function reinicar() {
 
     document.querySelector("header").scrollIntoView(true);
 }
+
+
+function criarDivPerguntas(id){
+      
+    if(id ==='img_pergunta2'){
+        formulario2.innerHTML ='';
+        
+        formulario2.innerHTML += `
+                    <span>Pergunta 2</span>
+                    <input type="text" class placeholder="Texto da pergunta"/>
+                    <input type="text" placeholder="Cor de fundo da pergunta"/>
+
+                    <span class="span_respostaCorreta">Resposta correta </span>
+                    <input type="text" placeholder="Resposta correta"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem"/>
+
+                    <span>Respostas incorretas</span>
+                    <input type="text" placeholder="Resposta incorreta 1"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem 1"/>
+
+                    <div class="barra"></div>
+
+                    <input type="text" placeholder="Resposta incorreta 2"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem 2"/>
+
+                    <div class="barra"></div>
+
+                    <input type="text" placeholder="Resposta incorreta 3"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem 3"/>
+        
+        
+        `;
+
+    }
+    flagFormulario2Setado = true;   
+    if(id==='img_pergunta3'){
+        formulario3.innerHTML ='';
+        
+        formulario3.innerHTML += `
+                    <span>Pergunta 3</span>
+                    <input type="text" class placeholder="Texto da pergunta"/>
+                    <input type="text" placeholder="Cor de fundo da pergunta"/>
+
+                    <span class="span_respostaCorreta">Resposta correta </span>
+                    <input type="text" placeholder="Resposta correta"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem"/>
+
+                    <span>Respostas incorretas</span>
+                    <input type="text" placeholder="Resposta incorreta 1"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem 1"/>
+
+                    <div class="barra"></div>
+
+                    <input type="text" placeholder="Resposta incorreta 2"/>
+                    <input type="text" class="input_URL" placeholder="URL da imagem 2"/>
+
+                    <div class="barra"></div>
+
+                    <input type="text" placeholder="Resposta incorreta 3"/>
+                    <input type="text"class="input_URL"  placeholder="URL da imagem 3"/>
+        
+        
+        `;
+
+    } 
+    flagFormulario3Setado=true;  
+}
+
+
+function validar_Perguntas(){
+    verificarCamposVaziosEURL();
+    if(flagCampos1NaoVazios === true|| flagCampos2NaoVazios === true||flagCampos3NaoVazios === true && flagURL === true ) {
+        //cadastrarVariaveisNoQuizz();
+        irParaNiveis();
+    }else{
+        alert("desculpe ocorreu um erro, tente novamente");
+        limparCampos();
+    }
+}
+
+function limparCampos (){
+    let campos=formulario1.getElementsByTagName("input");
+    let campos2=formulario2.getElementsByTagName("input");
+    let campos3=formulario3.getElementsByTagName("input");
+    for(let i=0;i < campos.length ; i++){
+            campos[i].value="";
+            campos2[i].value="";
+            campos3[i].value="";
+            flagCamposNaoVazios=false;   
+    }
+
+}
+
+function verificarCamposVaziosEURL(){
+    let verificarTextoResposta = "";
+    
+    flagURL = false;
+    flagCampos1NaoVazios=false;
+    let campos= formulario1.getElementsByTagName("input");
+      console.log(campos);
+    
+        for(let i=0;i < campos.length ; i++){
+            if(campos[i].value===""){
+                flagCampos1NaoVazios=false;
+                alert("existem campos vazios, por favor complete todos os campos");
+            }else{
+                flagCampos1NaoVazios=true;
+                if (verificaVinteCaracteres(campos[i].value("input_textoPergunta").value)=== true);
+
+                else if (verificaVinteCaracteres(campos[i].value("input_textoPergunta").value)=== false){
+                    alert("o texto da  resposta tem que ter mais de 20 caractéres");    
+            }
+        }
+        }
+        for(let i=0;i < campos.length ; i++){
+            if(campos[i].className==="input_URL"){
+                if (isValidHttpUrl(campos[i].value)===true){
+                    campos[i].style.border="none";
+                    flagURL=true;
+                }else{
+                    console.log ("campos I . value "+campos[i].value);
+                    console.log (isValidHttpUrl(campos[i].value));
+                    alert ("existem URLS INVALIDAS");
+                    campos[i].style.border="1px red solid";
+                    flagURL= false;
+                }
+                
+            }
+        }
+    
+    if(flagFormulario2Setado === true){
+        flagURL = false;
+        flagCampos2NaoVazios=false;
+        let campos2 = formulario2.getElementsByTagName("input");
+       
+        
+            for(let i=0;i < campos2.length ; i++){
+                if(campos2[i].value===""){
+                    flagCampos2NaoVazios=false;
+                    alert("existem campos vazios, por favor complete todos os campos");
+                }else{
+                    flagCampos2NaoVazios=true;
+                }
+            }
+        
+            for(let i=0;i < campos2.length ; i++){
+                if(campos2[i].className==="input_URL"){
+                    if (isValidHttpUrl(campos2[i].value)===true){
+                        campos2[i].style.border="none";
+                        flagURL=true;
+                    }else{
+                        console.log ("campos II . value "+campos2[i].value);
+                        console.log (isValidHttpUrl(campos2[i].value));
+                        alert ("existem URLS INVALIDAS");
+                        campos2[i].style.border="1px red solid";
+                        flagURL= false;
+                    }
+                    
+                }
+            }
+    }
+    if(flagFormulario3Setado === true){
+        flagURL = false;
+        flagCampos3NaoVazios=false;
+        let campos3= formulario3.getElementsByTagName("input");
+        
+        
+            for(let i=0;i < campos3.length ; i++){
+                if(campos3[i].value===""){
+                    flagCampos3NaoVazios=false;
+                    alert("existem campos vazios, por favor complete todos os campos");
+                }else{
+                    flagCampos3NaoVazios=true;
+                }
+            }
+        
+            for(let i=0;i < campos3.length ; i++){
+                if(campos3[i].className==="input_URL"){
+                    if (isValidHttpUrl(campos3[i].value)===true){
+                        campos3[i].style.border="none";
+                        flagURL=true;
+                    }else{
+                        console.log ("campos III . value "+campos3[i].value);
+                        console.log (isValidHttpUrl(campos3[i].value));
+                        alert ("existem URLS INVALIDAS");
+                        campos3[i].style.border="1px red solid";
+                        flagURL= false;
+                    }
+                    
+                }
+            }
+    }
+
+}  
+
+function isValidHttpUrl(string) {
+    let url;
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+function verificarInputsDoNivel(){
+    let inputs = formularioNiveis1.getElementsByTagName("input");
+     for(let i=0;inputs.length;i++){
+        if (inputs[i].value===""){
+        alert("nao pode haver campos vazios");
+        }
+
+     }
+
+}
+
+function verificaVinteCaracteres(string){
+    if(string.length>=20){
+        return true;
+    }
+    return false;
+}
+
+/// tratei os valores a resceber , agora é preparar o objeto para em seguida mandar nos  POSTS 
