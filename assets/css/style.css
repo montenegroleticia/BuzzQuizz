@@ -173,6 +173,42 @@ li p {
 /* FIM TELA 1 */
 
 /* INICIO TELA 3 */
+.divTitulo{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.perguntas{
+    align-items: center;
+}
+.tituloQuizz{
+    margin-top: 21px;
+}
+.btn_ProsseguirParaPerguntas{
+    width: 369px;
+    height: 54px;
+    margin-top: 81px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #FFF5F4;
+}
+.formularioTitulo{
+    align-items: center;
+    justify-content: center;
+    min-height: 256px;
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+}
 .formulario1 {
     min-height: 825px;
     min-width: 600px;
@@ -258,14 +294,14 @@ input {
   
     position: relative;
     top:0px;
-    left:440px;
+    left:860px;
     width:26px;
     Height:23px;
 }
 .formulario3 img{
     position: relative;
     top:0px;
-    left:440px;
+    left:860px;
     width:26px;
     Height:23px;
 }

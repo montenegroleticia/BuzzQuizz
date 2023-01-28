@@ -58,13 +58,28 @@
         <!-- INICIO TELA 3  -->
         <div class="tela03 hide">
             <section>
-                <div class="perguntas" >
+                <div class="divTitulo">
+                    <h3>Comece pelo começo</h3>
+                    <div class="formularioTitulo">
+                        <input type="text" class="tituloQuizz" placeholder="Título do seu quizz ">
+                        <input type="text" class="urlTituloQuizz" placeholder="URL da imagem do seu quizz">
+                        <input type="text" class="quantPerguntasQuizz" placeholder="Quantidade de perguntas do quizz">
+                        <input type="text" class="quantNiveisQuizz" placeholder="Quantidade de níveis do quizz ">
+                    </div>
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                    <button class="btn_ProsseguirParaPerguntas" onclick="prosseguirParaPerguntas()">prosseguir para perguntas</button>
+                </div>  
+            </section>
+            <section>
+
+                <div class="perguntas hide" >
                     <h3>Crie suas perguntas</h3>
 
-                    <div class="formulario1 hide ">
+                    <div class="formulario1 ">
 
                         <span>Pergunta 1</span>
-                        <input type="text" class="input_textoPergunta" placeholder="Texto da pergunta" />
+                        <input type="text" class="input_textoPergunta" id="input_textoPergunta" placeholder="Texto da pergunta" />
                         <input type="text" placeholder="Cor de fundo da pergunta" />
 
                         <span class="span_respostaCorreta">Resposta correta </span>
@@ -105,14 +120,14 @@
                     <button class="btn_prosseguirParaNiveis" onclick="validar_Perguntas()"> Prosseguir pra criar níveis </button>
                 </div>
                 <div class="barra"></div>
-                <div class="niveis hide" onclick="quizzFinalizado()">
+                <div class="niveis hide">
                     <div class="formularioNiveis1">
 
                         <span>Nível 1</span>
-                        <input type="text" id="nivelTitulo" placeholder="Título do nível" />
-                        <input type="text" id="percentualAcertoMinimo" placeholder="% de acerto mínima" />
-                        <input type="text" id="URL_img_nivel_input" placeholder="URL da imagem do nível" />
-                        <input type="text" id="nivel_Descript" placeholder="Descrição do nível" />
+                        <input type="text" class="nivelTitulo" placeholder="Título do nível" />
+                        <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
+                        <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
+                        <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
 
 
                     </div>
@@ -131,10 +146,12 @@
                         </span>
 
                     </div>
-                    <button class="btn_finalizarCriacaoDeQuizz"> Finalizar Quizz </button>
+                    <button class="btn_finalizarCriacaoDeQuizz" onClick="finalizarCriacaoQuizz()"> Finalizar Quizz </button>
                 </div>
                 <div class="barra"></div>
             </section>
+
+
             <section class="finalizado hide">
                 <h3>Seu Quizz está pronto</h3>
 
