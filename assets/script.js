@@ -1,70 +1,70 @@
 // Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
 
 let informacoesQuizz = {
-	title: ,
-	image: ,
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
 	questions: [
 		{
-			title: ,
-			color: ,
+			title: "Título da pergunta 1",
+			color: "#123456",
 			answers: [
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer: 
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
 				},
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer:
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
 				}
 			]
 		},
 		{
-			title: ,
-			color: ,
+			title: "Título da pergunta 2",
+			color: "#123456",
 			answers: [
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer: 
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
 				},
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer:
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
 				}
 			]
 		},
 		{
-			title: ,
-			color: ,
+			title: "Título da pergunta 3",
+			color: "#123456",
 			answers: [
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer: 
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
 				},
 				{
-					text: ,
-					image: ,
-					isCorrectAnswer: 
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
 				}
 			]
 		}
 	],
 	levels: [
 		{
-			title: ,
-			image: ,
-			text: ,
-			minValue: 
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
 		},
 		{
-			title: ,
-			image: ,
-			text:,
-			minValue:
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
 		}
 	]
 }
@@ -423,9 +423,7 @@ function prosseguirParaPerguntas(){
         for(let i=1;i <= quantidadePerguntas;i++){
             criarDivPerguntas(i);
         }
-            
         renderizarPerguntas();
-        
     }
 }
 
@@ -485,7 +483,6 @@ function criarDivPerguntas(i){
             <h3>Crie suas perguntas</h3>
             `;
         }     
-   
         divPerguntas.innerHTML += `
                 <div class"barra"></div>
                 <div class"barra"></div>
@@ -556,8 +553,6 @@ function validar_Perguntas(){
             criarDivNiveis(i);
        }
        renderizarNiveis();
-    
-    
     }else{
        
         alert("desculpe ocorreu um erro, tente novamente");
@@ -689,19 +684,27 @@ function verificaVinteCaracteres(string){
 
 function finalizarCriacaoQuizz(){
     if (flagNiveisOk===true){
-
-       
+ 
         adicionarInputsNoAxios();
-       
-        // 
-
     }else{
         alert("desculpe ocorreu um erro, revise os campos e tente novamente");
 
     }
+}
+// Enviar quizzes do usuário para a página home
+
+function enviarQuizzHome(){
+    const semQuizzes = document.querySelector(".criacao-quizzes");
+    semQuizzes.classList.add("hide");
+
+    const quizzesCriados = document.querySelector(".quizzes-criados");
+    quizzesCriados.classList.remove("hide");
 
 }
 
+function naoEnviou(erro){
+    console.log(erro);
+}
 function postQuizzAxios(){
     const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, informacoesQuizz);
     promese.then(enviarQuizzHome);
