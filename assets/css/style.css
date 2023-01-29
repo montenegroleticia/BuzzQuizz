@@ -563,17 +563,6 @@ input {
 
 /* FIM PARTE DA TELA 2 */
 
-@media (max-width:1000px) {
-
-    /* INICIO PARTE DA TELA 1 */
-    main,
-    .criacao-quizzes {
-        width: 700px;
-    }
-
-    /* FIM PARTE DA TELA 1 */
-}
-
 @media (max-width: 1100px) {
 
     /* INICIO PARTE DA TELA 1 */
@@ -654,4 +643,6 @@ input {
     }
 
     /* FIM PARTE DA TELA 2 */
+
+    /* INICIO PARTE DA TELA 3 */
 }

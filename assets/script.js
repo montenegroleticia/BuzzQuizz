@@ -676,11 +676,7 @@ function finalizarCriacaoQuizz(){
 
 // Enviar quizzes do usuário para a página home
 
-function enviarQuizzHome(resposta){
-    console.log(resposta);
-    const quizzSerializada = localStorage.getItem(resposta.data[index].id);
-    const dadosDeserializados = JSON.parse(quizzSerializada);
-
+function colocarQuizzNoHome(dadosDeserializados){
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
     const quizzesCriados = document.querySelector(".quizzes-criados");
@@ -688,10 +684,10 @@ function enviarQuizzHome(resposta){
 
     const quizzUsuario = document.querySelector('.criados');
     quizzUsuario.innerHTML = '';
-    for (let index = 0; index < resposta.data.length; index++) {
-        const id = resposta.data[index].id;
-        const title = resposta.data[index].title;
-        const image = resposta.data[index].image;
+    for (let index = 0; index < dadosDeserializados.data.length; index++) {
+        const id =  dadosDeserializados.data[index].id;
+        const title = dadosDeserializados.data[index].title;
+        const image = dadosDeserializados.data[index].image;
         const li = `
         <li id = "${id}" onclick="quizzSelecionado(this)">
             <p>${title}</p>
@@ -700,6 +696,13 @@ function enviarQuizzHome(resposta){
         document.getElementById(`${id}`).style.background =
             `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
     }
+}
+
+function enviarQuizzHome(resposta){
+    console.log(resposta);
+    const quizzSerializada = localStorage.getItem(resposta.data[index].id);
+    const dadosDeserializados = JSON.parse(quizzSerializada);
+    colocarQuizzNoHome(dadosDeserializados);
 }
 
 function naoEnviou(erro){
