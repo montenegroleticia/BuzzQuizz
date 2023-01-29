@@ -1,5 +1,4 @@
 /* INICIO TELA 1 */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 
 body {
@@ -170,8 +169,6 @@ li p {
     font-size: 19px;
     line-height: 22px;
 }
-
-/* FIM TELA 1 */
 
 /* INICIO TELA 3 */
 .divTitulo{
@@ -415,10 +412,7 @@ input {
     vertical-align: Center;
 }
 
-/* FIM TELA 3 */
-
 /* INICIO PARTE DA TELA 2 */
-
 .tituloQuiz {
     display: flex;
     align-items: center;
@@ -561,21 +555,15 @@ input {
     pointer-events: none;
 }
 
-/* FIM PARTE DA TELA 2 */
-
 @media (max-width: 1100px) {
 
     /* INICIO PARTE DA TELA 1 */
-
     main,
     .criacao-quizzes {
         width: 340px;
     }
 
-    /* FIM PARTE DA TELA 1 */
-
     /* INICIO PARTE DA TELA 2 */
-
     .tituloQuiz h1 {
         font-size: 2.6vh;
     }
@@ -641,8 +629,4 @@ input {
     .flexFim {
         width: min-content;
     }
-
-    /* FIM PARTE DA TELA 2 */
-
-    /* INICIO PARTE DA TELA 3 */
 }
