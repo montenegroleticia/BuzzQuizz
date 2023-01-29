@@ -7,12 +7,15 @@ let formulario1 = document.querySelector(".formulario1");
 let formulario2 = document.querySelector(".formulario2");
 let formulario3 = document.querySelector(".formulario3");
 
+let divPerguntas = document.querySelector(".perguntas");
+
 let formularioNiveis1 = document.querySelector(".formularioNiveis1");
 let formularioNiveis2 = document.querySelector(".formularioNiveis2");
 let formularioNiveis3 = document.querySelector(".formularioNiveis3");
 
 let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios,flagCampos2NaoVazios,flagCampos3NaoVazios,flagFormulario2Setado=false,flagFormulario3Setado=false;
 let flagNiveisOk=false,flagTituloOK=false,flagURLTitulo=false;
+let quantidadePerguntas=0; quantidadeNiveis=0;
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
@@ -212,11 +215,16 @@ function criarQuizz() {
 }
 
 // Intereção tela 03 
-function irParaPerguntas() {
-    const titulo = document.querySelector(".divTitulo");
-    titulo.classList.add('hide');
-    const perguntas = document.querySelector(".perguntas");
-    perguntas.classList.remove('hide');
+function renderizarPerguntas() {
+
+        let btnPerguntas=document.querySelector(".divButton");
+        btnPerguntas.classList.remove('hide');
+        let titulo = document.querySelector(".divTitulo");
+        titulo.classList.add('hide');
+        let perguntas = document.querySelector(".perguntas");
+        perguntas.classList.remove('hide');
+  
+   
 }
 function irParaNiveis() {
     const perguntas = document.querySelector(".perguntas");
@@ -332,15 +340,24 @@ function reinicar() {
 //JS DA TELA 3 
 
 function prosseguirParaPerguntas(){
+
     camposFormTitulo=document.querySelector(".formularioTitulo").getElementsByTagName("input");
     console.log(camposFormTitulo);
     validarTitulo(camposFormTitulo);
-    if(flagTituloOK===true && flagURLTitulo===true){
-        cadastrarTituloQuizz(camposFormTitulo);
-        console.log(quizz);
-        irParaPerguntas();
-    }
 
+    if(flagTituloOK===true && flagURLTitulo===true){
+        
+        cadastrarTituloQuizz(camposFormTitulo);
+        
+        divPerguntas.innerHTML ='';
+        
+        for(let i=1;i <= quantidadePerguntas;i++){
+            criarDivPerguntas(i);
+        }
+            
+        renderizarPerguntas();
+        
+    }
 }
 
 function cadastrarTituloQuizz(campos){
@@ -351,9 +368,14 @@ function cadastrarTituloQuizz(campos){
         if(campos[i].className==="urlTituloQuizz"){
             quizz.image=campos[i].value;
         }
+        if(campos[i].className==="quantPerguntasQuizz"){
+            quantidadePerguntas=campos[i].value;
+        }
+        if(campos[i].className==="quantNiveisQuizz"){
+            quantidadePerguntas=campos[i].value;
+        }
     }
-    quizz.title=campos.className("tituloQuizz").value;
-    quizz.image=campos.className(".urlTituloQuizz").value;
+    
 }
 
 function validarTitulo(campos){
@@ -388,69 +410,48 @@ function validarTitulo(campos){
 
 
 }
-function criarDivPerguntas(id){
-      
-    if(id ==='img_pergunta2'){
-        formulario2.innerHTML ='';
-        
-        formulario2.innerHTML += `
-                    <span>Pergunta 2</span>
-                    <input type="text" class placeholder="Texto da pergunta"/>
-                    <input type="text" placeholder="Cor de fundo da pergunta"/>
+function criarDivPerguntas(i){
+        if(i===1){
+            divPerguntas.innerHTML += `
+            <h3>Crie suas perguntas</h3>
+            `;
+        }     
+   
+        divPerguntas.innerHTML += `
+                <div class"barra"></div>
+                <div class"barra"></div>
+             <div class"formulario">
+             <div class"barra"></div><div class"barra"></div>
+                <span>Pergunta ${i}</span>
+                <div class"barra"></div>
+                <input type="text" class="input_textoPergunta${i}" id="input_textoPergunta" placeholder="Texto da pergunta" />
+                <input type="text" class="input_corDeFundo${i}" placeholder="Cor de fundo da pergunta" />
+                
+                <span class="span_respostaCorreta">Resposta correta </span>
+                <input type="text" class="input_respostaCorreta${i}" placeholder="Resposta correta" />
+                <input type="text" class="input_URL${i}" placeholder="URL da imagem" />
 
-                    <span class="span_respostaCorreta">Resposta correta </span>
-                    <input type="text" placeholder="Resposta correta"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem"/>
+                <span>Respostas incorretas</span>
+                <input type="text" class="input_respostaInocrreta${i}" placeholder="Resposta incorreta ${i}" />
+                <input type="text" class="input_URL${i}" placeholder="URL da imagem ${i}" />
 
-                    <span>Respostas incorretas</span>
-                    <input type="text" placeholder="Resposta incorreta 1"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem 1"/>
+                <div class="barra"></div>
 
-                    <div class="barra"></div>
+                <input type="text" class="input_respostaInocrreta${i+1}" placeholder="Resposta incorreta ${i+1}" />
+                <input type="text" class="input_URL${i+1}" placeholder="URL da imagem ${i+1}" />
 
-                    <input type="text" placeholder="Resposta incorreta 2"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem 2"/>
+                <div class="barra"></div>
 
-                    <div class="barra"></div>
+                <input type="text" class="input_respostaInocrreta${i+2}" placeholder="Resposta incorreta ${i+2}" />
+                <input type="text" class="input_URL${i+2}" placeholder="URL da imagem ${i+2}" />
 
-                    <input type="text" placeholder="Resposta incorreta 3"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem 3"/>
-        
-        
+            </div>
+            <div class"barra"></div>
+            <div class"barra"></div>
         `;
 
-    }
+       
     flagFormulario2Setado = true;   
-    if(id==='img_pergunta3'){
-        formulario3.innerHTML ='';
-        
-        formulario3.innerHTML += `
-                    <span>Pergunta 3</span>
-                    <input type="text" class placeholder="Texto da pergunta"/>
-                    <input type="text" placeholder="Cor de fundo da pergunta"/>
-
-                    <span class="span_respostaCorreta">Resposta correta </span>
-                    <input type="text" placeholder="Resposta correta"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem"/>
-
-                    <span>Respostas incorretas</span>
-                    <input type="text" placeholder="Resposta incorreta 1"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem 1"/>
-
-                    <div class="barra"></div>
-
-                    <input type="text" placeholder="Resposta incorreta 2"/>
-                    <input type="text" class="input_URL" placeholder="URL da imagem 2"/>
-
-                    <div class="barra"></div>
-
-                    <input type="text" placeholder="Resposta incorreta 3"/>
-                    <input type="text"class="input_URL"  placeholder="URL da imagem 3"/>
-        
-        
-        `;
-
-    } 
     flagFormulario3Setado=true;  
 }
 
@@ -498,12 +499,19 @@ function verificarCamposVaziosEURL(){
                 alert("existem campos vazios, por favor complete todos os campos");
             }else{
                 flagCampos1NaoVazios=true;
+
                 if (campos[i].className ==="input_textoPergunta"){
                     if (verificaVinteCaracteres(campos[i].value)){}
                     else {
                         alert("o texto da  resposta tem que ter mais de 20 caractéres");  
                      }
                     
+                }
+
+                if(campos[i].className==="input_corDeFundo"){
+                    if(campos[i].value.startsWith("#")===false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
+                        alert("por favor preencha a cor corretamente"); 
+                    }
                 }
 
               

@@ -38,6 +38,7 @@ main {
     width: 1051px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 /* Criação de novos Quizzes */
@@ -174,21 +175,22 @@ li p {
 
 /* INICIO TELA 3 */
 .divTitulo{
+    
+max-width: 600;
+align-items: center;
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.perguntas{
-    align-items: center;
-}
 .tituloQuizz{
     margin-top: 21px;
+}
+.divTitulo h3{
+    margin-left: 200px;
 }
 .btn_ProsseguirParaPerguntas{
     width: 369px;
     height: 54px;
-    margin-top: 81px;
+    margin-top: 20px;
+    margin-left:115.5px ;
     background: #EC362D;
     border-radius: 15px;
     font-family: 'Roboto', sans-serif;
@@ -209,10 +211,10 @@ li p {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 
 }
-.formulario1 {
+.perguntas {
     min-height: 825px;
-    min-width: 600px;
-    display: flex;
+    max-width: 600px;
+    align-items: center;
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -264,33 +266,22 @@ input {
     min-height: 20px;
     min-width: 600px;
 }
-
-.formulario2 {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: row;
+.tela03{
+    
+    align-items: center;
     min-height: 74px;
-    min-width: 600px;
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-
+    max-width: 600px;
 }
-
-.formulario3 {
+.formulario {
     margin-top: 24px;
-    display: flex;
-    flex-direction: row;
     min-height: 74px;
-    min-width: 600px;
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
+    max-width: 600px;
+    align-items: center;
+    background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     
 }
-.formulario2 img{
+.formulario img{
   
     position: relative;
     top:0px;
@@ -298,18 +289,13 @@ input {
     width:26px;
     Height:23px;
 }
-.formulario3 img{
-    position: relative;
-    top:0px;
-    left:860px;
-    width:26px;
-    Height:23px;
-}
+
 
 .btn_prosseguirParaNiveis{
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
+    margin-left: 115.5px;
     background: #EC362D;
     border-radius: 15px;
     font-family: 'Roboto', sans-serif;
