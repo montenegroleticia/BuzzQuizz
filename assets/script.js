@@ -1,3 +1,74 @@
+// Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
+
+let informacoesQuizz = {
+	title: ,
+	image: ,
+	questions: [
+		{
+			title: ,
+			color: ,
+			answers: [
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer: 
+				},
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer:
+				}
+			]
+		},
+		{
+			title: ,
+			color: ,
+			answers: [
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer: 
+				},
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer:
+				}
+			]
+		},
+		{
+			title: ,
+			color: ,
+			answers: [
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer: 
+				},
+				{
+					text: ,
+					image: ,
+					isCorrectAnswer: 
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: ,
+			image: ,
+			text: ,
+			minValue: 
+		},
+		{
+			title: ,
+			image: ,
+			text:,
+			minValue:
+		}
+	]
+}
+
 let quizz = new Object;
 let quizzAxios = new Object;
 let formulario = document.querySelector(".formulario");
@@ -632,8 +703,7 @@ function finalizarCriacaoQuizz(){
 }
 
 function postQuizzAxios(){
-
-    //then(renderizar tela de quizz finalizado)
-    //catch(tratar erro)
-
+    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, informacoesQuizz);
+    promese.then(enviarQuizzHome);
+    promese.catch(naoEnviou);
 }
