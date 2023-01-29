@@ -1,6 +1,3 @@
-// Obter todos os quizzes
-
-
 let quizz = new Object;
 let quizzAxios = new Object;
 let formulario = document.querySelector(".formulario");
@@ -13,9 +10,10 @@ let formularioNiveis1 = document.querySelector(".formularioNiveis1");
 let formularioNiveis2 = document.querySelector(".formularioNiveis2");
 let formularioNiveis3 = document.querySelector(".formularioNiveis3");
 
-let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios,flagCampos2NaoVazios,flagCampos3NaoVazios,flagFormulario2Setado=false,flagFormulario3Setado=false;
-let flagNiveisOk=false,flagTituloOK=false,flagURLTitulo=false;
-let quantidadePerguntas=0; quantidadeNiveis=0;
+let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios, flagCampos2NaoVazios, flagCampos3NaoVazios, flagFormulario2Setado = false,flagFormulario3Setado = false;
+let flagNiveisOk = false, flagTituloOK = false, flagURLTitulo = false;
+let quantidadePerguntas = 0; quantidadeNiveis = 0;
+
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
@@ -34,7 +32,6 @@ function carregarQuizz(resposta) {
 }
 
 function naoCarregou(erro) {
-    console.log("ERRO");
     console.log(erro);
 }
 
@@ -45,11 +42,6 @@ function carregarQuizzes() {
     promese.catch(naoCarregou);
 }
 carregarQuizzes();
-
-// erro ao abrir quiz
-function nãoAbriuQuizz(erro) {
-    console.log(erro);
-}
 
 // exibir quiz selecionado
 
@@ -196,6 +188,10 @@ function embaralharRespotas(array) {
 function sucessoQuizz(selected) {
     selectedQuizz = selected.data;
     exibirQuizz();
+}
+
+function nãoAbriuQuizz(erro) {
+    console.log(erro);
 }
 
 // Selecionar um quizz específico ao clicar
@@ -534,7 +530,7 @@ function limparCampos (){
     }
 
 }
-
+/*
 function verificarCamposVaziosEURL(){
     
     flagURL = false;
@@ -587,10 +583,8 @@ function verificarCamposVaziosEURL(){
               
             }
         }
-      
-
 }  
-
+*/
 function isValidHttpUrl(string) {
     let url;
     try {
