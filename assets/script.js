@@ -492,7 +492,7 @@ function criarDivPerguntas(i){
         divPerguntas.innerHTML += `
                 <div class"barra"></div>
                 <div class"barra"></div>
-                <div class"formulario">
+                <div class"formulario" id=Pergunta${i}>
                 <div class"barra"></div><div class"barra"></div>
                 <span>Pergunta ${i}</span>
                 <div class"barra"></div>
@@ -501,21 +501,21 @@ function criarDivPerguntas(i){
                 
                 <span class="span_respostaCorreta">Resposta correta </span>
                 <input type="text" class="input_respostaCorreta" placeholder="Resposta correta" />
-                <input type="text" class="input_URL" placeholder="URL da imagem" />
+                <input type="text" class="input_URL1" placeholder="URL da imagem" />
 
                 <span>Respostas incorretas</span>
-                <input type="text" class="input_respostaInocrreta" placeholder="Resposta incorreta ${i}" />
-                <input type="text" class="input_URL" placeholder="URL da imagem ${i}" />
+                <input type="text" class="input_respostaIncorreta1" placeholder="Resposta incorreta ${i}" />
+                <input type="text" class="input_URL2" placeholder="URL da imagem ${i}" />
 
                 <div class="barra"></div>
 
-                <input type="text" class="input_respostaInocrreta" placeholder="Resposta incorreta ${i+1}" />
-                <input type="text" class="input_URL" placeholder="URL da imagem ${i+1}" />
+                <input type="text" class="input_respostaIncorreta2" placeholder="Resposta incorreta ${i+1}" />
+                <input type="text" class="input_URL3" placeholder="URL da imagem ${i+1}" />
 
                 <div class="barra"></div>
 
-                <input type="text" class="input_respostaInocrreta${i+2}" placeholder="Resposta incorreta ${i+2}" />
-                <input type="text" class="input_URL${i+2}" placeholder="URL da imagem ${i+2}" />
+                <input type="text" class="input_respostaIncorreta3" placeholder="Resposta incorreta ${i+2}" />
+                <input type="text" class="input_URL4" placeholder="URL da imagem ${i+2}" />
 
             </div>
             <div class"barra"></div>
@@ -559,49 +559,85 @@ function validar_Perguntas(){
     verificarCamposVaziosEURL();
    
     if(flagCampos1NaoVazios === true && flagURL === true) {
-      //  cadastrarVariaveisNoQuizz();
+ 
 
       criarDivNiveis();
       renderizarNiveis();
-      
-      
-    
+      for(let i=1;i<=quantidadePerguntas;i++){
+        cadastrarVariaveisNoQuizz(i);
+      }
     
     }else{
        
         alert("desculpe ocorreu um erro, tente novamente");
-        limparCampos();
+       voltarHome();
     }
 }
-/*
-function  cadastrarVariaveisNoQuizz(){
-    
-    let perguntas = [];
-    campos=formulario.getElementsByTagName("input");
-        for(let i=0;i<campos.length;i++){
-            perguntas = {
-                title: `${campos[i].querySelector('input[class="input_textoPergunta"]').value}`,
-                color: `${campos[i].querySelector('input[class="input_corDeFundo"]').value}`,
-                answers: [
-                  {
-                    text: `${campos[i].value}`,
-                    image: `${campos[i].value}`,
-                    isCorrectAnswer: true,
-                  },
-                  {
-                    text: `${campos[i].value}`,
-                    image: `${campos[i].value}`,
-                    isCorrectAnswer: false,
-                  },
-                ],
-              };
-          
-              console.log("perguntas vale"+perguntas);
-              quizz.questions.push(perguntas);
-            }
+function  cadastrarVariaveisNoQuizz(index){
+        debugger;
+        const blocoPergunta=document.getElementById(`Pergunta${index}`);
         
+        
+
+        const tituloPergunta = blocoPergunta.querySelector(".input_textoPergunta");
+        const color = blocoPergunta.querySelector(".input_corDeFundo");
+        
+
+        
+		const textcorreto=  blocoPergunta.querySelector(".input_respostaCorreta");
+		const imagecorreta=  blocoPergunta.querySelector(".input_URL1");
+		
+        
+        const textincorreto1=  blocoPergunta.querySelector(".input_respostaIncorreta1");
+		const imageincorreta1=  blocoPergunta.querySelector(".input_URL2");
+		
+
+        const textincorreto2=  blocoPergunta.querySelector(".input_respostaIncorreta2");
+		const imageincorreta2=  blocoPergunta.querySelector(".input_URL3");
+		
+
+        const textincorreto3=  blocoPergunta.querySelector(".input_respostaIncorreta3");
+		const imageincorreta3=  blocoPergunta.querySelector(".input_URL4");
+		
+
+     
+
+     
+        const questions = [{
+                    title: tituloPergunta.value,
+                    color: color.value,
+                    answers: [
+                        {
+                            text: textcorreto.value,
+                            image: imagecorreta.value,
+                            isCorrectAnswer: true
+                        },
+                        {
+                            text: textincorreto1.value,
+                            image: imageincorreta1.value,
+                            isCorrectAnswer: false
+                        },
+                        {
+                            text: textincorreto2.value,
+                            image: imageincorreta2.value,
+                            isCorrectAnswer: false
+                        },
+                        {
+                            text: textincorreto3.value,
+                            image: imageincorreta3.value,
+                            isCorrectAnswer: false
+                        },
+                    ]
+            }];
+        
+
+        quizz.push(questions);
+
+     console.log("Questions "+questions);
+     console.log("Quizz "+quizz);
+
 }
-*/
+
 
 function limparCampos (){
     campos=document.querySelectorAll("input");
@@ -618,7 +654,6 @@ function verificarCamposVaziosEURL(){
 
     let campos = divPerguntas.getElementsByTagName("input");
      
-        debugger;
         for(let i=0;i < campos.length ; i++){
             if(campos[i].value===""){
                 flagCampos1NaoVazios=false;
@@ -764,3 +799,4 @@ function postQuizzAxios(){
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
+
