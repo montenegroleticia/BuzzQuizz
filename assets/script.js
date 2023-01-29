@@ -459,8 +459,6 @@ function validarTitulo(campos){
                  }
                 
             }
-
-          
         }
         if(campos[i].className==="urlTituloQuizz"){
             if (isValidHttpUrl(campos[i].value)===true){
@@ -513,10 +511,7 @@ function criarDivPerguntas(i){
 
             </div>
             <div class"barra"></div>
-            <div class"barra"></div>
-        `;
-
-       
+            <div class"barra"></div>`;
 }
 
 function criarDivNiveis(i){
@@ -526,22 +521,14 @@ function criarDivNiveis(i){
         `;
     }
     divPerguntas.innerHTML += `
-    
          <div class="formularioNiveis">
-
-                        <span>Nível ${i}</span>
-                        <input type="text" class="nivelTitulo" placeholder="Título do nível" />
-                        <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
-                        <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
-                        <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
-
-
+            <span>Nível ${i}</span>
+            <input type="text" class="nivelTitulo" placeholder="Título do nível" />
+            <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
+            <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
+            <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
         </div>
-        <div class="barra"></div>
-    
-    
-    `;   
-
+        <div class="barra"></div>`;
 }
 
 function validar_Perguntas(){
@@ -594,55 +581,54 @@ function limparCampos (){
             campos[i].value="";
             flagCamposNaoVazios=false;   
     }
-
 }
-/*
+
 function verificarCamposVaziosEURL(){
     
     flagURL = false;
-    flagCampos1NaoVazios=false;
+    flagCampos1NaoVazios = false;
 
     let campos = divPerguntas.getElementsByTagName("input");
      
         debugger;
         for(let i=0;i < campos.length ; i++){
-            if(campos[i].value===""){
-                flagCampos1NaoVazios=false;
-                campos[i].style.border="1px red solid";
+            if(campos[i].value === ""){
+                flagCampos1NaoVazios = false;
+                campos[i].style.border = "1px red solid";
                 alert("existem campos vazios, por favor complete todos os campos");
             }else{
-                flagCampos1NaoVazios=true;
-                campos[i].style.border="none";
+                flagCampos1NaoVazios = true;
+                campos[i].style.border = "none";
 
-                if (campos[i].className ==="input_textoPergunta"){
+                if (campos[i].className === "input_textoPergunta"){
 
                     if (verificaVinteCaracteres(campos[i].value)){
-                        campos[i].style.border="none";
+                        campos[i].style.border = "none";
                     }
                     else {
-                        campos[i].style.border="1px red solid";
+                        campos[i].style.border = "1px red solid";
                         alert("o texto da resposta tem que ter mais de 20 caractéres");  
                      }
                     
                 }
 
-                if(campos[i].className==="input_corDeFundo"){
-                    if(campos[i].value.startsWith("#")===false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
-                        campos[i].style.border="1px red solid";
+                if(campos[i].className === "input_corDeFundo"){
+                    if(campos[i].value.startsWith("#") === false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
+                        campos[i].style.border = "1px red solid";
                         alert("por favor preencha a cor corretamente"); 
                     }else{
-                        campos[i].style.border="none";
+                        campos[i].style.border = "none";
                     }
                 }
-                if(campos[i].className==="input_URL"){
-                    if (isValidHttpUrl(campos[i].value)===true){
-                        campos[i].style.border="none";
-                        flagURL=true;
+                if(campos[i].className === "input_URL"){
+                    if (isValidHttpUrl(campos[i].value) === true){
+                        campos[i].style.border = "none";
+                        flagURL = true;
                     }else{
                        
                         alert ("existem URLS INVALIDAS");
-                        campos[i].style.border="1px red solid";
-                        flagURL= false;
+                        campos[i].style.border = "1px red solid";
+                        flagURL = false;
                     }
                     
                 }
@@ -650,7 +636,7 @@ function verificarCamposVaziosEURL(){
             }
         }
 }  
-*/
+
 function isValidHttpUrl(string) {
     let url;
     try {
@@ -663,16 +649,14 @@ function isValidHttpUrl(string) {
 
 function verificarInputsDoNivel(){
     let inputs = formularioNiveis1.getElementsByTagName("input");
-     for(let i=0;inputs.length;i++){
-        if (inputs[i].value===""){
-            flagNiveisOk=false;
+     for(let i = 0;inputs.length;i++){
+        if (inputs[i].value === ""){
+            flagNiveisOk = false;
             alert("não pode haver campos vazios");
         }else {
-            flagNiveisOk=true;
+            flagNiveisOk = true;
         }
-
      }
-
 }
 
 function verificaVinteCaracteres(string){
@@ -684,13 +668,12 @@ function verificaVinteCaracteres(string){
 
 function finalizarCriacaoQuizz(){
     if (flagNiveisOk===true){
- 
         adicionarInputsNoAxios();
     }else{
         alert("desculpe ocorreu um erro, revise os campos e tente novamente");
-
     }
 }
+
 // Enviar quizzes do usuário para a página home
 
 function carregarQuizz(resposta) {
