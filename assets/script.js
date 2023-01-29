@@ -76,15 +76,15 @@ let formulario2 = document.querySelector(".formulario2");
 let formulario3 = document.querySelector(".formulario3");
 
 let divPerguntas = document.querySelector(".perguntas");
+let divNiveis = document.querySelector(".niveis");
 
 let formularioNiveis1 = document.querySelector(".formularioNiveis1");
 let formularioNiveis2 = document.querySelector(".formularioNiveis2");
 let formularioNiveis3 = document.querySelector(".formularioNiveis3");
 
-let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios, flagCampos2NaoVazios, flagCampos3NaoVazios, flagFormulario2Setado = false,flagFormulario3Setado = false;
-let flagNiveisOk = false, flagTituloOK = false, flagURLTitulo = false;
-let quantidadePerguntas = 0; quantidadeNiveis = 0;
-
+let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios,flagCampos2NaoVazios,flagCampos3NaoVazios,flagFormulario2Setado=false,flagFormulario3Setado=false;
+let flagNiveisOk=false,flagTituloOK=false,flagURLTitulo=false;
+let quantidadePerguntas=0; quantidadeNiveis=0;
 function carregarQuizz(resposta) {
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
@@ -103,6 +103,7 @@ function carregarQuizz(resposta) {
 }
 
 function naoCarregou(erro) {
+    console.log("ERRO");
     console.log(erro);
 }
 
@@ -113,6 +114,11 @@ function carregarQuizzes() {
     promese.catch(naoCarregou);
 }
 carregarQuizzes();
+
+// erro ao abrir quiz
+function nãoAbriuQuizz(erro) {
+    console.log(erro);
+}
 
 // exibir quiz selecionado
 
@@ -261,10 +267,6 @@ function sucessoQuizz(selected) {
     exibirQuizz();
 }
 
-function nãoAbriuQuizz(erro) {
-    console.log(erro);
-}
-
 // Selecionar um quizz específico ao clicar
 function quizzSelecionado(selecionado) {
     const quiz = Number(selecionado.id);
@@ -294,12 +296,14 @@ function renderizarPerguntas() {
    
 }
 function renderizarNiveis() {
-    let btnNiveis=document.querySelector(".divBotaoFianlizarCriacao");
-    btnNiveis.classList.remove('hide');
+    let btnPerguntas=document.querySelector(".divButton");
+    btnPerguntas.classList.add('hide');
     const perguntas = document.querySelector(".perguntas");
     perguntas.classList.add('hide');
     const niveis = document.querySelector(".niveis");
     niveis.classList.remove('hide');
+    let btnNiveis=document.querySelector(".divBotaoFianlizarCriacao");
+    btnNiveis.classList.remove('hide');
 }
 
 function quizzFinalizado() {
@@ -411,7 +415,6 @@ function reinicar() {
 function prosseguirParaPerguntas(){
 
     camposFormTitulo=document.querySelector(".formularioTitulo").getElementsByTagName("input");
-    console.log(camposFormTitulo);
     validarTitulo(camposFormTitulo);
 
     if(flagTituloOK===true && flagURLTitulo===true){
@@ -423,7 +426,9 @@ function prosseguirParaPerguntas(){
         for(let i=1;i <= quantidadePerguntas;i++){
             criarDivPerguntas(i);
         }
+            
         renderizarPerguntas();
+        
     }
 }
 
@@ -439,7 +444,7 @@ function cadastrarTituloQuizz(campos){
             quantidadePerguntas=campos[i].value;
         }
         if(campos[i].className==="quantNiveisQuizz"){
-            quantidadePerguntas=campos[i].value;
+            quantidadeNiveis=campos[i].value;
         }
     }
     
@@ -459,6 +464,8 @@ function validarTitulo(campos){
                  }
                 
             }
+
+          
         }
         if(campos[i].className==="urlTituloQuizz"){
             if (isValidHttpUrl(campos[i].value)===true){
@@ -481,6 +488,7 @@ function criarDivPerguntas(i){
             <h3>Crie suas perguntas</h3>
             `;
         }     
+   
         divPerguntas.innerHTML += `
                 <div class"barra"></div>
                 <div class"barra"></div>
@@ -511,43 +519,63 @@ function criarDivPerguntas(i){
 
             </div>
             <div class"barra"></div>
-            <div class"barra"></div>`;
+            <div class"barra"></div>
+        `;
+
+       
 }
 
-function criarDivNiveis(i){
-    if(i===1){
-        divPerguntas.innerHTML += `
-        <h3>Agora, decida os níveis</h3>
-        `;
+function criarDivNiveis(){
+  
+    for (let i=1;i<=quantidadeNiveis;i++){
+        if(i===1){
+            divNiveis.innerHTML += `
+            <h3>Agora, decida os níveis</h3>
+            `;
+        }
+        divNiveis.innerHTML += `
+        
+             <div class="Niveis">
+                            
+                            <span>Nível ${i}</span>
+                            <input type="text" class="nivelTitulo" placeholder="Título do nível" />
+                            <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
+                            <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
+                            <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
+    
+    
+            </div>
+            <div class="barra"></div>
+        
+        
+        `;   
     }
-    divPerguntas.innerHTML += `
-         <div class="formularioNiveis">
-            <span>Nível ${i}</span>
-            <input type="text" class="nivelTitulo" placeholder="Título do nível" />
-            <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
-            <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
-            <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
-        </div>
-        <div class="barra"></div>`;
+   
+
 }
 
 function validar_Perguntas(){
+    divNiveis.innerHTML='';   
     verificarCamposVaziosEURL();
+   
     if(flagCampos1NaoVazios === true && flagURL === true) {
-        cadastrarVariaveisNoQuizz();
+      //  cadastrarVariaveisNoQuizz();
 
-       for(let i=1;i<=quantidadeNiveis;i++){
-            criarDivNiveis(i);
-       }
-       renderizarNiveis();
+      criarDivNiveis();
+      renderizarNiveis();
+      
+      
+    
+    
     }else{
        
         alert("desculpe ocorreu um erro, tente novamente");
         limparCampos();
     }
 }
+/*
 function  cadastrarVariaveisNoQuizz(){
-
+    
     let perguntas = [];
     campos=formulario.getElementsByTagName("input");
         for(let i=0;i<campos.length;i++){
@@ -573,7 +601,7 @@ function  cadastrarVariaveisNoQuizz(){
             }
         
 }
-
+*/
 
 function limparCampos (){
     campos=document.querySelectorAll("input");
@@ -586,55 +614,59 @@ function limparCampos (){
 function verificarCamposVaziosEURL(){
     
     flagURL = false;
-    flagCampos1NaoVazios = false;
+    flagCampos1NaoVazios=false;
 
     let campos = divPerguntas.getElementsByTagName("input");
      
         debugger;
         for(let i=0;i < campos.length ; i++){
-            if(campos[i].value === ""){
-                flagCampos1NaoVazios = false;
-                campos[i].style.border = "1px red solid";
+            if(campos[i].value===""){
+                flagCampos1NaoVazios=false;
+                campos[i].style.border="1px red solid";
                 alert("existem campos vazios, por favor complete todos os campos");
             }else{
-                flagCampos1NaoVazios = true;
-                campos[i].style.border = "none";
+                flagCampos1NaoVazios=true;
+                campos[i].style.border="none";
 
-                if (campos[i].className === "input_textoPergunta"){
+                if (campos[i].className ==="input_textoPergunta"){
 
                     if (verificaVinteCaracteres(campos[i].value)){
-                        campos[i].style.border = "none";
+                        campos[i].style.border="none";
                     }
                     else {
-                        campos[i].style.border = "1px red solid";
+                        campos[i].style.border="1px red solid";
                         alert("o texto da resposta tem que ter mais de 20 caractéres");  
                      }
                     
                 }
 
-                if(campos[i].className === "input_corDeFundo"){
-                    if(campos[i].value.startsWith("#") === false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
-                        campos[i].style.border = "1px red solid";
+            /*     if(campos[i].className==="input_corDeFundo"){
+                    if(campos[i].value.startsWith("#")===false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
+                        campos[i].style.border="1px red solid";
                         alert("por favor preencha a cor corretamente"); 
                     }else{
-                        campos[i].style.border = "none";
+                        campos[i].style.border="none";
                     }
                 }
-                if(campos[i].className === "input_URL"){
-                    if (isValidHttpUrl(campos[i].value) === true){
-                        campos[i].style.border = "none";
-                        flagURL = true;
+
+             */   
+                if(campos[i].className==="input_URL"){
+                    if (isValidHttpUrl(campos[i].value)===true){
+                        campos[i].style.border="none";
+                        flagURL=true;
                     }else{
                        
                         alert ("existem URLS INVALIDAS");
-                        campos[i].style.border = "1px red solid";
-                        flagURL = false;
+                        campos[i].style.border="1px red solid";
+                        flagURL= false;
                     }
                     
                 }
               
             }
         }
+      
+
 }  
 
 function isValidHttpUrl(string) {
@@ -649,14 +681,16 @@ function isValidHttpUrl(string) {
 
 function verificarInputsDoNivel(){
     let inputs = formularioNiveis1.getElementsByTagName("input");
-     for(let i = 0;inputs.length;i++){
-        if (inputs[i].value === ""){
-            flagNiveisOk = false;
+     for(let i=0;inputs.length;i++){
+        if (inputs[i].value===""){
+            flagNiveisOk=false;
             alert("não pode haver campos vazios");
         }else {
-            flagNiveisOk = true;
+            flagNiveisOk=true;
         }
+
      }
+
 }
 
 function verificaVinteCaracteres(string){
@@ -668,12 +702,25 @@ function verificaVinteCaracteres(string){
 
 function finalizarCriacaoQuizz(){
     if (flagNiveisOk===true){
+
+       
         adicionarInputsNoAxios();
+       
+        // 
+
     }else{
         alert("desculpe ocorreu um erro, revise os campos e tente novamente");
+
     }
+
 }
 
+function postQuizzAxios(){
+
+    //then(renderizar tela de quizz finalizado)
+    //catch(tratar erro)
+
+}
 // Enviar quizzes do usuário para a página home
 
 function colocarQuizzNoHome(dadosDeserializados){
