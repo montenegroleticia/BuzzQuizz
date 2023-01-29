@@ -693,13 +693,45 @@ function finalizarCriacaoQuizz(){
 }
 // Enviar quizzes do usuário para a página home
 
-function enviarQuizzHome(){
+function carregarQuizz(resposta) {
+    const quizz = document.querySelector('ul');
+    quizz.innerHTML = '';
+    for (let index = 0; index < resposta.data.length; index++) {
+        const id = resposta.data[index].id;
+        const title = resposta.data[index].title;
+        const image = resposta.data[index].image;
+        const li = `
+        <li id = "${id}" onclick="quizzSelecionado(this)">
+            <p>${title}</p>
+        </li>`;
+        quizz.innerHTML += li;
+        document.getElementById(`${id}`).style.background =
+            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+    }
+}
+
+function enviarQuizzHome(resposta){
+    console.log(resposta);
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
 
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
 
+    const quizzUsuario = document.querySelector('.criados');
+    quizzUsuario.innerHTML = '';
+    for (let index = 0; index < resposta.data.length; index++) {
+        const id = resposta.data[index].id;
+        const title = resposta.data[index].title;
+        const image = resposta.data[index].image;
+        const li = `
+        <li id = "${id}" onclick="quizzSelecionado(this)">
+            <p>${title}</p>
+        </li>`;
+        quizzUsuario.innerHTML += li;
+        document.getElementById(`${id}`).style.background =
+            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+    }
 }
 
 function naoEnviou(erro){
