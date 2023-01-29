@@ -3,7 +3,7 @@
 
 let quizz = new Object;
 let quizzAxios = new Object;
-let formulario1 = document.querySelector(".formulario1");
+let formulario = document.querySelector(".formulario");
 let formulario2 = document.querySelector(".formulario2");
 let formulario3 = document.querySelector(".formulario3");
 
@@ -226,7 +226,9 @@ function renderizarPerguntas() {
   
    
 }
-function irParaNiveis() {
+function renderizarNiveis() {
+    let btnNiveis=document.querySelector(".divBotaoFianlizarCriacao");
+    btnNiveis.classList.remove('hide');
     const perguntas = document.querySelector(".perguntas");
     perguntas.classList.add('hide');
     const niveis = document.querySelector(".niveis");
@@ -420,25 +422,25 @@ function criarDivPerguntas(i){
         divPerguntas.innerHTML += `
                 <div class"barra"></div>
                 <div class"barra"></div>
-             <div class"formulario">
-             <div class"barra"></div><div class"barra"></div>
+                <div class"formulario">
+                <div class"barra"></div><div class"barra"></div>
                 <span>Pergunta ${i}</span>
                 <div class"barra"></div>
-                <input type="text" class="input_textoPergunta${i}" id="input_textoPergunta" placeholder="Texto da pergunta" />
-                <input type="text" class="input_corDeFundo${i}" placeholder="Cor de fundo da pergunta" />
+                <input type="text" class="input_textoPergunta" id="input_textoPergunta" placeholder="Texto da pergunta" />
+                <input type="text" class="input_corDeFundo" placeholder="Cor de fundo da pergunta" />
                 
                 <span class="span_respostaCorreta">Resposta correta </span>
-                <input type="text" class="input_respostaCorreta${i}" placeholder="Resposta correta" />
-                <input type="text" class="input_URL${i}" placeholder="URL da imagem" />
+                <input type="text" class="input_respostaCorreta" placeholder="Resposta correta" />
+                <input type="text" class="input_URL" placeholder="URL da imagem" />
 
                 <span>Respostas incorretas</span>
-                <input type="text" class="input_respostaInocrreta${i}" placeholder="Resposta incorreta ${i}" />
-                <input type="text" class="input_URL${i}" placeholder="URL da imagem ${i}" />
+                <input type="text" class="input_respostaInocrreta" placeholder="Resposta incorreta ${i}" />
+                <input type="text" class="input_URL" placeholder="URL da imagem ${i}" />
 
                 <div class="barra"></div>
 
-                <input type="text" class="input_respostaInocrreta${i+1}" placeholder="Resposta incorreta ${i+1}" />
-                <input type="text" class="input_URL${i+1}" placeholder="URL da imagem ${i+1}" />
+                <input type="text" class="input_respostaInocrreta" placeholder="Resposta incorreta ${i+1}" />
+                <input type="text" class="input_URL" placeholder="URL da imagem ${i+1}" />
 
                 <div class="barra"></div>
 
@@ -451,36 +453,83 @@ function criarDivPerguntas(i){
         `;
 
        
-    flagFormulario2Setado = true;   
-    flagFormulario3Setado=true;  
 }
 
+function criarDivNiveis(i){
+    if(i===1){
+        divPerguntas.innerHTML += `
+        <h3>Agora, decida os níveis</h3>
+        `;
+    }
+    divPerguntas.innerHTML += `
+    
+         <div class="formularioNiveis">
+
+                        <span>Nível ${i}</span>
+                        <input type="text" class="nivelTitulo" placeholder="Título do nível" />
+                        <input type="text" class="percentualAcertoMinimo" placeholder="% de acerto mínima" />
+                        <input type="text" class="URL_img_nivel_input" placeholder="URL da imagem do nível" />
+                        <input type="text" class="nivel_Descript" placeholder="Descrição do nível" />
+
+
+        </div>
+        <div class="barra"></div>
+    
+    
+    `;   
+
+}
 
 function validar_Perguntas(){
     verificarCamposVaziosEURL();
-    if(flagCampos1NaoVazios === true|| flagCampos2NaoVazios === true||flagCampos3NaoVazios === true && flagURL === true ) {
+    if(flagCampos1NaoVazios === true && flagURL === true) {
         cadastrarVariaveisNoQuizz();
-        irParaNiveis();
+
+       for(let i=1;i<=quantidadeNiveis;i++){
+            criarDivNiveis(i);
+       }
+       renderizarNiveis();
+    
+    
     }else{
+       
         alert("desculpe ocorreu um erro, tente novamente");
         limparCampos();
     }
 }
 function  cadastrarVariaveisNoQuizz(){
-    let campos1=formulario1.getElementsByTagName("input");
-    let campos2=formulario2.getElementsByTagName("input");
-    let campos3=formulario3.getElementsByTagName("input");
-    quizz.title
+
+    let perguntas = [];
+    campos=formulario.getElementsByTagName("input");
+        for(let i=0;i<campos.length;i++){
+            perguntas = {
+                title: `${campos[i].querySelector('input[class="input_textoPergunta"]').value}`,
+                color: `${campos[i].querySelector('input[class="input_corDeFundo"]').value}`,
+                answers: [
+                  {
+                    text: `${campos[i].value}`,
+                    image: `${campos[i].value}`,
+                    isCorrectAnswer: true,
+                  },
+                  {
+                    text: `${campos[i].value}`,
+                    image: `${campos[i].value}`,
+                    isCorrectAnswer: false,
+                  },
+                ],
+              };
+          
+              console.log("perguntas vale"+perguntas);
+              quizz.questions.push(perguntas);
+            }
+        
 }
 
+
 function limparCampos (){
-    let campos=formulario1.getElementsByTagName("input");
-    let campos2=formulario2.getElementsByTagName("input");
-    let campos3=formulario3.getElementsByTagName("input");
+    campos=document.querySelectorAll("input");
     for(let i=0;i < campos.length ; i++){
             campos[i].value="";
-            campos2[i].value="";
-            campos3[i].value="";
             flagCamposNaoVazios=false;   
     }
 
@@ -490,111 +539,55 @@ function verificarCamposVaziosEURL(){
     
     flagURL = false;
     flagCampos1NaoVazios=false;
-    let campos= formulario1.getElementsByTagName("input");
+
+    let campos = divPerguntas.getElementsByTagName("input");
      
-    
+        debugger;
         for(let i=0;i < campos.length ; i++){
             if(campos[i].value===""){
                 flagCampos1NaoVazios=false;
+                campos[i].style.border="1px red solid";
                 alert("existem campos vazios, por favor complete todos os campos");
             }else{
                 flagCampos1NaoVazios=true;
+                campos[i].style.border="none";
 
                 if (campos[i].className ==="input_textoPergunta"){
-                    if (verificaVinteCaracteres(campos[i].value)){}
+
+                    if (verificaVinteCaracteres(campos[i].value)){
+                        campos[i].style.border="none";
+                    }
                     else {
-                        alert("o texto da  resposta tem que ter mais de 20 caractéres");  
+                        campos[i].style.border="1px red solid";
+                        alert("o texto da resposta tem que ter mais de 20 caractéres");  
                      }
                     
                 }
 
                 if(campos[i].className==="input_corDeFundo"){
                     if(campos[i].value.startsWith("#")===false || campos[i].value.replace(/[^a-fA-f09#]/g,"")!==campos[i].value || campos[i].value.length!==7){
+                        campos[i].style.border="1px red solid";
                         alert("por favor preencha a cor corretamente"); 
+                    }else{
+                        campos[i].style.border="none";
                     }
                 }
-
+                if(campos[i].className==="input_URL"){
+                    if (isValidHttpUrl(campos[i].value)===true){
+                        campos[i].style.border="none";
+                        flagURL=true;
+                    }else{
+                       
+                        alert ("existem URLS INVALIDAS");
+                        campos[i].style.border="1px red solid";
+                        flagURL= false;
+                    }
+                    
+                }
               
             }
         }
-        for(let i=0;i < campos.length ; i++){
-            if(campos[i].className==="input_URL"){
-                if (isValidHttpUrl(campos[i].value)===true){
-                    campos[i].style.border="none";
-                    flagURL=true;
-                }else{
-                    console.log ("campos I . value "+campos[i].value);
-                    console.log (isValidHttpUrl(campos[i].value));
-                    alert ("existem URLS INVALIDAS");
-                    campos[i].style.border="1px red solid";
-                    flagURL= false;
-                }
-                
-            }
-        }
-    
-    if(flagFormulario2Setado === true){
-        flagURL = false;
-        flagCampos2NaoVazios=false;
-        let campos2 = formulario2.getElementsByTagName("input");
-       
-        
-            for(let i=0;i < campos2.length ; i++){
-                if(campos2[i].value===""){
-                    flagCampos2NaoVazios=false;
-                    alert("existem campos vazios, por favor complete todos os campos");
-                }else{
-                    flagCampos2NaoVazios=true;
-                }
-            }
-        
-            for(let i=0;i < campos2.length ; i++){
-                if(campos2[i].className==="input_URL"){
-                    if (isValidHttpUrl(campos2[i].value)===true){
-                        campos2[i].style.border="none";
-                        flagURL=true;
-                    }else{
-                        console.log ("campos II . value "+campos2[i].value);
-                        console.log (isValidHttpUrl(campos2[i].value));
-                        alert ("existem URLS INVALIDAS");
-                        campos2[i].style.border="1px red solid";
-                        flagURL= false;
-                    }
-                    
-                }
-            }
-    }
-    if(flagFormulario3Setado === true){
-        flagURL = false;
-        flagCampos3NaoVazios=false;
-        let campos3= formulario3.getElementsByTagName("input");
-        
-        
-            for(let i=0;i < campos3.length ; i++){
-                if(campos3[i].value===""){
-                    flagCampos3NaoVazios=false;
-                    alert("existem campos vazios, por favor complete todos os campos");
-                }else{
-                    flagCampos3NaoVazios=true;
-                }
-            }
-        
-            for(let i=0;i < campos3.length ; i++){
-                if(campos3[i].className==="input_URL"){
-                    if (isValidHttpUrl(campos3[i].value)===true){
-                        campos3[i].style.border="none";
-                        flagURL=true;
-                    }else{
-                        console.log ("campos III . value "+campos3[i].value);
-                        console.log (isValidHttpUrl(campos3[i].value));
-                        alert ("existem URLS INVALIDAS");
-                        campos3[i].style.border="1px red solid";
-                        flagURL= false;
-                    }
-                    
-                }
-            }
-    }
+      
 
 }  
 
@@ -643,107 +636,6 @@ function finalizarCriacaoQuizz(){
     }
 
 }
-/*
-function adicionarInputsNoAxios(){
-    
- 
-        quizz.title: "Título do quizz",
-        quizz.image: "https://http.cat/411.jpg",
-        questions: [
-            {
-                title: "Título da pergunta 1",
-                color: "#123456",
-                answers: [
-                    {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: "Título da pergunta 2",
-                color: "#123456",
-                answers: [
-                    {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-            {
-                title: "Título da pergunta 3",
-                color: "#123456",
-                answers: [
-                    {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
-                        isCorrectAnswer: false
-                    }
-                ]
-            }
-        ],
-        levels: [
-            {
-                title: "Título do nível 1",
-                image: "https://http.cat/411.jpg",
-                text: "Descrição do nível 1",
-                minValue: 0
-            },
-            {
-                title: "Título do nível 2",
-                image: "https://http.cat/412.jpg",
-                text: "Descrição do nível 2",
-                minValue: 50
-            }
-        ]
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    postQuizzAxios();
-}*/
 
 function postQuizzAxios(){
 
@@ -751,4 +643,3 @@ function postQuizzAxios(){
     //catch(tratar erro)
 
 }
-/// tratei os valores a resceber , agora é preparar o objeto para em seguida mandar nos  POSTS 
