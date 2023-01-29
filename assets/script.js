@@ -1,6 +1,6 @@
 // Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
 
-let informacoesQuizz = {
+const informacoesQuizz = {
 	title: "Título do quizz",
 	image: "https://http.cat/411.jpg",
 	questions: [
@@ -676,28 +676,13 @@ function finalizarCriacaoQuizz(){
 
 // Enviar quizzes do usuário para a página home
 
-function carregarQuizz(resposta) {
-    const quizz = document.querySelector('ul');
-    quizz.innerHTML = '';
-    for (let index = 0; index < resposta.data.length; index++) {
-        const id = resposta.data[index].id;
-        const title = resposta.data[index].title;
-        const image = resposta.data[index].image;
-        const li = `
-        <li id = "${id}" onclick="quizzSelecionado(this)">
-            <p>${title}</p>
-        </li>`;
-        quizz.innerHTML += li;
-        document.getElementById(`${id}`).style.background =
-            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
-    }
-}
-
 function enviarQuizzHome(resposta){
     console.log(resposta);
+    const quizzSerializada = localStorage.getItem(resposta.data[index].id);
+    const dadosDeserializados = JSON.parse(quizzSerializada);
+
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
-
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
 
@@ -720,8 +705,12 @@ function enviarQuizzHome(resposta){
 function naoEnviou(erro){
     console.log(erro);
 }
+
 function postQuizzAxios(){
-    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, informacoesQuizz);
+    const dadosSerializado = JSON.stringify(informacoesQuizz);
+    localStorage.setItem(informacoesQuizz);
+
+    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, dadosSerializado);
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
