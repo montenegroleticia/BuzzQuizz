@@ -4,7 +4,7 @@ let quizz = {
     image: "",
     questions: [],
     levels: [],
-}
+};
 
 let quizzAxios = new Object;
 let formulario = document.querySelector(".formulario");
