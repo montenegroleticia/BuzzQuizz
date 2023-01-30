@@ -1,74 +1,4 @@
 // Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
-
-const informacoesQuizz = {
-	title: "Título do quizz",
-	image: "https://http.cat/411.jpg",
-	questions: [
-		{
-			title: "Título da pergunta 1",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 2",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 3",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		}
-	],
-	levels: [
-		{
-			title: "Título do nível 1",
-			image: "https://http.cat/411.jpg",
-			text: "Descrição do nível 1",
-			minValue: 0
-		},
-		{
-			title: "Título do nível 2",
-			image: "https://http.cat/412.jpg",
-			text: "Descrição do nível 2",
-			minValue: 50
-		}
-	]
-}
-
 let quizz = {
     title:"",
     image:"",
@@ -315,7 +245,7 @@ function renderizarNiveis() {
 function quizzFinalizado() {
     const niveis = document.querySelector(".niveis");
     niveis.classList.add('hide');
-    const finalizado = document.querySelector(".finalizado");
+    const finalizado = document.querySelector(".divBotaoFianlizarCriacao");
     finalizado.classList.remove('hide');
 }
 
@@ -831,11 +761,11 @@ function naoEnviou(erro){
 }
 
 function postQuizzAxios(){
-    /*
+
     const dadosSerializado = JSON.stringify(quizz);
     localStorage.setItem(quizz);
-*/
-    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, quizz);
+
+    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, dadosSerializado);
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
