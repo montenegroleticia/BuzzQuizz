@@ -34,7 +34,7 @@ function carregarQuizz(resposta) {
         let cond = true;
 
         for (let i = 0; i < arr.length; i++) {
-            if(arr[i] === resposta.data[index].id)
+            if (arr[i] === resposta.data[index].id)
                 cond = false;
         }
 
@@ -289,6 +289,10 @@ function quizzFinalizado() {
         alert("desculpe ocorreu um erro, tente novamente");
         voltarHome();
     }
+
+    document.querySelector(".QuizzCard").style.background =
+        `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), 
+        url('${quizz.image}')`;
 }
 
 function voltarHome() {
@@ -774,6 +778,7 @@ function colocarQuizzNoHome() {
 }
 
 function enviarQuizzHome(resposta) {
+
     console.log("deu bom!");
     console.log(resposta);
 
@@ -795,7 +800,8 @@ function enviarQuizzHome(resposta) {
 
     const dadosSerializado = JSON.stringify(resposta);
     localStorage.setItem(JSON.stringify(arrIds[arrIds.length - 1]), dadosSerializado);
-    colocarQuizzNoHome();
+
+    document.querySelector(".btn_AcessarQuizz").setAttribute("id", resposta.data.id);
 }
 
 function naoEnviou(erro) {
