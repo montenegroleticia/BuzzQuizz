@@ -680,14 +680,13 @@ function verificarInputsDoNivel() {
 
     let campos = divNiveis.getElementsByTagName("input");
 
-    for (let i = 0; campos.length; i++) {
+    for (let i = 0; i < campos.length; i++) {
         if (campos[i].value === "") {
             flagNiveisOk = false;
             alert("não pode haver campos vazios");
         } else {
             flagNiveisOk = true;
         }
-
     }
 
 }
