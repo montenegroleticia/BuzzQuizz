@@ -3,8 +3,7 @@ let quizz = {
     title: "",
     image: "",
     questions: [],
-    levels: [],
-
+    levels: []
 }
 
 let quizzAxios = new Object;
@@ -425,7 +424,7 @@ function validarTitulo(campos) {
             flagTituloOK = false;
             alert("O texto do título tem que ter mais de 20 caractéres !");
         }
-        else if(campos[i].className === "tituloQuizz"){
+        else if (campos[i].className === "tituloQuizz") {
             flagTituloOK = true;
         }
 
@@ -562,7 +561,7 @@ function cadastrarVariaveisNoQuizz(index) {
     const imageincorreta3 = blocoPergunta.querySelector(".input_URL4");
 
 
-    const perguntas = [{
+    const perguntas = {
         title: tituloPergunta.value,
         color: color.value,
         answers: [
@@ -587,7 +586,7 @@ function cadastrarVariaveisNoQuizz(index) {
                 isCorrectAnswer: false
             },
         ]
-    }];
+    };
 
     quizz.questions.push(perguntas);
 
@@ -705,13 +704,13 @@ function cadastrarNiveisNoQuizz(index) {
     const textNivel = blocoNivel.querySelector(".nivel_Descript");
     const percentNivel = blocoNivel.querySelector(".percentualAcertoMinimo");
 
-    const niveis = [{
+    const niveis = {
 
         title: tituloNivel.value,
         image: imageNivel.value,
         text: textNivel.value,
         minValue: percentNivel.value
-    }];
+    };
 
     quizz.levels.push(niveis);
 
@@ -755,7 +754,7 @@ function naoEnviou(erro) {
     console.log(erro);
 }
 
-function postQuizzAxios(){
+function postQuizzAxios() {
     const dadosSerializado = JSON.stringify(quizz);
     localStorage.setItem(quizz);
 
