@@ -561,8 +561,8 @@ function criarDivNiveis(){
 }
 
 function validar_Perguntas(){
-    debugger;
-    divNiveis.innerHTML='';   
+   // debugger;
+     divNiveis.innerHTML+="";   
     verificarCamposVaziosEURL();
    
     if(flagCampos1NaoVazios === true && flagURL === true) {
@@ -581,7 +581,7 @@ function validar_Perguntas(){
     }
 }
 function  cadastrarVariaveisNoQuizz(index){
-        debugger;
+//debugger;
         const blocoPergunta=document.getElementById(`Pergunta${index}`);
         
         
@@ -652,7 +652,7 @@ function limparCampos (){
 }
 
 function verificarCamposVaziosEURL(){
-    debugger;
+    //debugger;
     flagURL = false;
     flagCampos1NaoVazios=false;
 
@@ -722,9 +722,11 @@ function isValidHttpUrl(string) {
 }
 
 function verificarInputsDoNivel(){
-    let inputs = formularioNiveis1.getElementsByTagName("input");
-     for(let i=0;inputs.length;i++){
-        if (inputs[i].value===""){
+
+    let campos = divNiveis.getElementsByTagName("input");
+
+     for(let i=0;campos.length;i++){
+        if (campos[i].value===""){
             flagNiveisOk=false;
             alert("não pode haver campos vazios");
         }else {
@@ -743,19 +745,20 @@ function verificaVinteCaracteres(string){
 }
 
 function finalizarCriacaoQuizz(){
-    debugger;  
+    //debugger;  
+    
     verificarInputsDoNivel();
    
     if (flagNiveisOk===true){
 
-        criarDivTelaFinalizado(); //criar ainda 
-        renderizarTelaFinalizado();// criar ainda 
+       // criarDivTelaFinalizado(); //criar ainda 
+        //renderizarTelaFinalizado();// criar ainda 
 
         for(let i=1;i<=quantidadeNiveis;i++){
-            cadastrarNiveisNoQuizz();
+            cadastrarNiveisNoQuizz(i);
         }
 
-        adicionarInputsNoAxios(); // criar ainda 
+        postQuizzAxios(); 
        
 
     }else{
@@ -764,8 +767,8 @@ function finalizarCriacaoQuizz(){
         voltarHome();
     }
 }
-function cadastrarNiveisNoQuizz(){
-    debugger;
+function cadastrarNiveisNoQuizz(index){
+    //debugger;
     const blocoNivel=document.getElementById(`nivel${index}`);
     
   
@@ -789,12 +792,7 @@ function cadastrarNiveisNoQuizz(){
 
  console.log("Quizz "+quizz);
 };
-function postQuizzAxios(){
 
-    //then(renderizar tela de quizz finalizado)
-    //catch(tratar erro)
-
-}
 // Enviar quizzes do usuário para a página home
 
 function colocarQuizzNoHome(dadosDeserializados){
@@ -820,6 +818,7 @@ function colocarQuizzNoHome(dadosDeserializados){
 }
 
 function enviarQuizzHome(resposta){
+    console.log("deu bom!");
     console.log(resposta);
     const quizzSerializada = localStorage.getItem(resposta.data[index].id);
     const dadosDeserializados = JSON.parse(quizzSerializada);
@@ -827,6 +826,7 @@ function enviarQuizzHome(resposta){
 }
 
 function naoEnviou(erro){
+    console.log ("nao deu")
     console.log(erro);
 }
 
