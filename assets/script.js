@@ -245,10 +245,26 @@ function renderizarNiveis() {
 }
 
 function quizzFinalizado() {
-    const niveis = document.querySelector(".niveis");
-    niveis.classList.add('hide');
-    const finalizado = document.querySelector(".divBotaoFianlizarCriacao");
-    finalizado.classList.remove('hide');
+    verificarInputsDoNivel();
+
+    if (flagNiveisOk === true) {
+
+        const niveis = document.querySelector(".niveis");
+        niveis.classList.add('hide');
+        const finalizado = document.querySelector(".divBotaoFianlizarCriacao");
+        finalizado.classList.remove('hide');
+
+        for (let i = 1; i <= quantidadeNiveis; i++) {
+            cadastrarNiveisNoQuizz(i);
+        }
+
+        postQuizzAxios();
+
+    } else {
+
+        alert("desculpe ocorreu um erro, tente novamente");
+        voltarHome();
+    }
 }
 
 function voltarHome() {
@@ -671,31 +687,7 @@ function verificaVinteCaracteres(string) {
         return true;
     return false;
 }
-/*
-function finalizarCriacaoQuizz() {
-    //debugger;  
 
-    verificarInputsDoNivel();
-
-    if (flagNiveisOk === true) {
-
-        // criarDivTelaFinalizado(); //criar ainda 
-        //renderizarTelaFinalizado();// criar ainda 
-
-        for (let i = 1; i <= quantidadeNiveis; i++) {
-            cadastrarNiveisNoQuizz(i);
-        }
-
-        postQuizzAxios();
-
-
-    } else {
-
-        alert("desculpe ocorreu um erro, tente novamente");
-        voltarHome();
-    }
-}
-*/
 function cadastrarNiveisNoQuizz(index) {
     //debugger;
     const blocoNivel = document.getElementById(`nivel${index}`);
