@@ -1,10 +1,10 @@
 // Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
-let quizz = [
-    {title: ""},
-    {image: ""},
-    {questions: },
-    {levels: }
-];
+let quizz = {
+    title: "",
+    image: "",
+    questions: [],
+    levels: [],
+}
 
 let quizzAxios = new Object;
 let formulario = document.querySelector(".formulario");
