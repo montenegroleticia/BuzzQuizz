@@ -245,13 +245,23 @@ function renderizarNiveis() {
 }
 
 function quizzFinalizado() {
+    const niveis = document.querySelector(".niveis");
+    niveis.classList.add('hide');
+    const botao = document.querySelector(".divBotaoFianlizarCriacao");
+    botao.classList.add('hide');
+    const finalizado = document.querySelector(".finalizado");
+    finalizado.classList.remove('hide');
+    postQuizzAxios();
+
     verificarInputsDoNivel();
 
     if (flagNiveisOk === true) {
 
         const niveis = document.querySelector(".niveis");
         niveis.classList.add('hide');
-        const finalizado = document.querySelector(".divBotaoFianlizarCriacao");
+        const botao = document.querySelector(".divBotaoFianlizarCriacao");
+        botao.classList.add('hide');
+        const finalizado = document.querySelector(".finalizado");
         finalizado.classList.remove('hide');
 
         for (let i = 1; i <= quantidadeNiveis; i++) {
@@ -691,14 +701,10 @@ function verificaVinteCaracteres(string) {
 function cadastrarNiveisNoQuizz(index) {
     //debugger;
     const blocoNivel = document.getElementById(`nivel${index}`);
-
-
-
     const tituloNivel = blocoNivel.querySelector(".nivelTitulo");
     const imageNivel = blocoNivel.querySelector(".URL_img_nivel_input");
     const textNivel = blocoNivel.querySelector(".nivel_Descript");
     const percentNivel = blocoNivel.querySelector(".percentualAcertoMinimo");
-
 
     const niveis = [{
 
@@ -709,7 +715,6 @@ function cadastrarNiveisNoQuizz(index) {
     }];
 
     quizz.levels.push(niveis);
-
 
     console.log("Quizz " + quizz);
 };
@@ -752,7 +757,6 @@ function naoEnviou(erro) {
 }
 
 function postQuizzAxios(){
-
     const dadosSerializado = JSON.stringify(quizz);
     localStorage.setItem(quizz);
 
@@ -760,4 +764,3 @@ function postQuizzAxios(){
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
-
