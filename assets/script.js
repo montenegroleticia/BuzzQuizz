@@ -259,6 +259,8 @@ function renderizarNiveis() {
     niveis.classList.remove('hide');
     let btnNiveis = document.querySelector(".divBotaoFianlizarCriacao");
     btnNiveis.classList.remove('hide');
+    let box = document.querySelector(".box");
+    box.classList.add('hide');
 }
 
 function quizzFinalizado() {
