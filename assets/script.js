@@ -718,14 +718,30 @@ function cadastrarNiveisNoQuizz(index) {
 
 // Enviar quizzes do usuário para a página home
 
-function colocarQuizzNoHome() {
+function quizzFinalizado (){
+    const finalizado = document.querySelector('.QuizzCard');
+    finalizado.innerHTML = '';
+    for (let index = 0; index < dadosDeserializados.data.length; index++) {
+        const id = dadosDeserializados.data[index].id;
+        const title = dadosDeserializados.data[index].title;
+        const image = dadosDeserializados.data[index].image;
+        const li = `
+        <li id = "${id}" onclick="quizzSelecionado(this)">
+            <p>${title}</p>
+        </li>`;
+        quizzUsuario.innerHTML += li;
+        document.getElementById(`${id}`).style.background =
+            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+    }
+}
 
+function colocarQuizzNoHome() {
 
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
-
+    quizzFinalizado();
 
     const quizzSerializada = localStorage.getItem('quizzesUsuario');
     const dadosDeserializados = JSON.parse(quizzSerializada);
@@ -761,6 +777,8 @@ function naoEnviou(erro) {
 
 function postQuizzAxios() {
     const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, quizz);
+    promese.header("Access-Control-Allow-Origin", "*");
+    promese.header("Access-Control-Allow-Headers", "Origin, X-Request-Width, Content-Type, Accept");
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
