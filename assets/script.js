@@ -250,7 +250,6 @@ function quizzFinalizado() {
     botao.classList.add('hide');
     const finalizado = document.querySelector(".finalizado");
     finalizado.classList.remove('hide');
-    postQuizzAxios();
 
     verificarInputsDoNivel();
 
