@@ -10,10 +10,6 @@ body {
     box-sizing: border-box;
 }
 
-.hide {
-    display: none;
-}
-
 /* Cabeçalho do site */
 header {
     width: 100vw;
@@ -563,6 +559,10 @@ input {
 
 .impedirClique {
     pointer-events: none;
+}
+
+.hide {
+    display: none;
 }
 
 @media (max-width: 1100px) {
