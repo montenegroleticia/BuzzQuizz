@@ -171,23 +171,24 @@ li p {
 }
 
 /* INICIO TELA 3 */
-.divTitulo{
-    
-max-width: 600;
-align-items: center;
+.divTitulo {
+    max-width: 600;
+    align-items: center;
 }
 
-.tituloQuizz{
+.tituloQuizz {
     margin-top: 21px;
 }
-.divTitulo h3{
+
+.divTitulo h3 {
     margin-left: 200px;
 }
-.btn_ProsseguirParaPerguntas{
+
+.btn_ProsseguirParaPerguntas {
     width: 369px;
     height: 54px;
     margin-top: 20px;
-    margin-left:115.5px ;
+    margin-left: 115.5px;
     background: #EC362D;
     border-radius: 15px;
     font-family: 'Roboto', sans-serif;
@@ -197,7 +198,8 @@ align-items: center;
     line-height: 25px;
     color: #FFF5F4;
 }
-.formularioTitulo{
+
+.formularioTitulo {
     align-items: center;
     justify-content: center;
     min-height: 256px;
@@ -208,6 +210,7 @@ align-items: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 
 }
+
 .perguntas {
     min-height: 825px;
     max-width: 600px;
@@ -263,12 +266,14 @@ input {
     min-height: 20px;
     min-width: 600px;
 }
-.tela03{
-    
+
+.tela03 {
+
     align-items: center;
     min-height: 74px;
     max-width: 600px;
 }
+
 .formulario {
     margin-top: 24px;
     min-height: 74px;
@@ -276,19 +281,20 @@ input {
     align-items: center;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    
+
 }
-.formulario img{
-  
+
+.formulario img {
+
     position: relative;
-    top:0px;
-    left:860px;
-    width:26px;
-    Height:23px;
+    top: 0px;
+    left: 860px;
+    width: 26px;
+    Height: 23px;
 }
 
 
-.btn_prosseguirParaNiveis{
+.btn_prosseguirParaNiveis {
     width: 353.91px;
     height: 54px;
     margin-top: 81px;
@@ -439,7 +445,7 @@ input {
 
 .pergunta {
     width: 759px;
-    height: 676px;
+    height: auto;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 30px;
@@ -448,6 +454,7 @@ input {
     align-items: center;
     box-sizing: border-box;
     margin-top: 42px;
+    overflow: hidden;
 }
 
 .pergunta img {
@@ -488,6 +495,9 @@ input {
     line-height: 24px;
     margin-top: 8px;
     margin-bottom: 19px;
+    overflow-y: scroll;
+    word-break: break-all;
+    max-height: 175px;
 }
 
 .margin {
