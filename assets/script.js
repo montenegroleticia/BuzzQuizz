@@ -18,24 +18,31 @@ let formularioNiveis1 = document.querySelector(".formularioNiveis1");
 let formularioNiveis2 = document.querySelector(".formularioNiveis2");
 let formularioNiveis3 = document.querySelector(".formularioNiveis3");
 
-let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas, selectedQuizz, flagURL, flagCampos1NaoVazios, flagCampos2NaoVazios, flagCampos3NaoVazios, flagFormulario2Setado = false, flagFormulario3Setado = false;
+let contadorScroll = 1, contadorAcertos = 0, maxPerguntas, levels, arrRespostas,
+    selectedQuizz, flagURL, flagCampos1NaoVazios, flagCampos2NaoVazios, flagCampos3NaoVazios,
+    flagFormulario2Setado = false, flagFormulario3Setado = false, arr = [];
 let flagNiveisOk = false, flagTituloOK = false, flagURLTitulo = false;
 let quantidadePerguntas = 0; quantidadeNiveis = 0;
 
 function carregarQuizz(resposta) {
+
     const quizz = document.querySelector('ul');
     quizz.innerHTML = '';
+
     for (let index = 0; index < resposta.data.length; index++) {
-        const id = resposta.data[index].id;
-        const title = resposta.data[index].title;
-        const image = resposta.data[index].image;
-        const li = `
+
+        if (arr[index] !== resposta.data[index].id) {
+            const id = resposta.data[index].id;
+            const title = resposta.data[index].title;
+            const image = resposta.data[index].image;
+            const li = `
         <li id = "${id}" onclick="quizzSelecionado(this)">
             <p>${title}</p>
         </li>`;
-        quizz.innerHTML += li;
-        document.getElementById(`${id}`).style.background =
-            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+            quizz.innerHTML += li;
+            document.getElementById(`${id}`).style.background =
+                `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+        }
     }
 }
 
@@ -50,8 +57,9 @@ function carregarQuizzes() {
     promese.then(carregarQuizz);
     promese.catch(naoCarregou);
 }
-carregarQuizzes();
+
 colocarQuizzNoHome();
+carregarQuizzes();
 
 // erro ao abrir quiz
 function nãoAbriuQuizz(erro) {
@@ -721,35 +729,65 @@ function cadastrarNiveisNoQuizz(index) {
 
 function colocarQuizzNoHome() {
 
+    if (localStorage.getItem('ids') === null)
+        return;
+
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
 
-    const quizzSerializada = localStorage.getItem('quizzesUsuario');
-    const dadosDeserializados = JSON.parse(quizzSerializada);
-    console.log(dadosDeserializados);
+    let arrIds = localStorage.getItem('ids');
+    arrIds = JSON.parse(arrIds);
+    arr = arrIds;
 
-    const quizzUsuario = document.querySelector('.criados');
-    quizzUsuario.innerHTML = '';
+    for (let index = 0; index < arrIds.length; index++) {
 
-    const id = dadosDeserializados.data.id;
-    const title = dadosDeserializados.data.title;
-    const image = dadosDeserializados.data.image;
-    const li = `
+        const quizzSerializada = localStorage.getItem(JSON.stringify(arrIds[index]));
+        const dadosDeserializados = JSON.parse(quizzSerializada);
+        console.log(dadosDeserializados);
+
+        const quizzUsuario = document.querySelector('.criados');
+        if (index === 0)
+            quizzUsuario.innerHTML = '';
+
+        const id = dadosDeserializados.data.id;
+        const title = dadosDeserializados.data.title;
+        const image = dadosDeserializados.data.image;
+        const li = `
         <li id = "${id}" onclick="quizzSelecionado(this)">
             <p>${title}</p>
         </li>`;
-    quizzUsuario.innerHTML += li;
-    document.getElementById(`${id}`).style.background =
-        `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+        quizzUsuario.innerHTML += li;
+        document.getElementById(`${id}`).style.background =
+            `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
+
+    }
+
 }
 
 function enviarQuizzHome(resposta) {
     console.log("deu bom!");
     console.log(resposta);
+
+    let arrIds = [];
+
+    if (localStorage.getItem('ids') === null) {
+        arrIds.push(resposta.data.id);
+        const arrRespostas = JSON.stringify(arrIds);
+        localStorage.setItem('ids', arrRespostas);
+    }
+    else {
+        arrIds = localStorage.getItem('ids');
+        arrIds = JSON.parse(arrIds);
+        console.log(arrIds);
+        arrIds.push(resposta.data.id);
+        const arrRespostas = JSON.stringify(arrIds);
+        localStorage.setItem('ids', arrRespostas);
+    }
+
     const dadosSerializado = JSON.stringify(resposta);
-    localStorage.setItem('quizzesUsuario', dadosSerializado);
+    localStorage.setItem(JSON.stringify(arrIds[arrIds.length - 1]), dadosSerializado);
     colocarQuizzNoHome();
 }
 
@@ -760,7 +798,7 @@ function naoEnviou(erro) {
 
 function postQuizzAxios() {
     const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, quizz);
-    
+
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
