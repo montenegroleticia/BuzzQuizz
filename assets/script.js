@@ -718,15 +718,13 @@ function cadastrarNiveisNoQuizz(index) {
 
 // Enviar quizzes do usuário para a página home
 
-function quizzFinalizado (){
-    const quizzSerializada = localStorage.getItem('quizzesUsuario');
-    const dadosDeserializados = JSON.parse(quizzSerializada);
+function quizzFinal (dados){
     const finalizado = document.querySelector('.QuizzCard');
     finalizado.innerHTML = '';
-    for (let index = 0; index < dadosDeserializados.data.length; index++) {
-        const id = dadosDeserializados.data[index].id;
-        const title = dadosDeserializados.data[index].title;
-        const image = dadosDeserializados.data[index].image;
+    for (let index = 0; index < dados.data.length; index++) {
+        const id = dados.data[index].id;
+        const title = dados.data[index].title;
+        const image = dados.data[index].image;
         const li = `
         <li id = "${id}" onclick="quizzSelecionado(this)">
             <p>${title}</p>
@@ -738,12 +736,12 @@ function quizzFinalizado (){
 }
 
 function colocarQuizzNoHome() {
-
+    /*
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
-
+    */
     const quizzSerializada = localStorage.getItem('quizzesUsuario');
     const dadosDeserializados = JSON.parse(quizzSerializada);
     console.log(dadosDeserializados);
@@ -761,7 +759,7 @@ function colocarQuizzNoHome() {
         document.getElementById(`${id}`).style.background =
             `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${image}')`;
     }
-    quizzFinalizado();
+    quizzFinal(dadosDeserializados);
 }
 
 function enviarQuizzHome(resposta) {
