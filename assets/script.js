@@ -236,7 +236,7 @@ function criarQuizz() {
     tela03.classList.remove('hide');
 }
 
-// Interação tela 03 
+// Intereção tela 03 
 function renderizarPerguntas() {
 
     let btnPerguntas = document.querySelector(".divButton");
@@ -245,8 +245,6 @@ function renderizarPerguntas() {
     titulo.classList.add('hide');
     let perguntas = document.querySelector(".perguntas");
     perguntas.classList.remove('hide');
-    let box = document.querySelector(".box");
-    box.classList.remove('hide');
 
 
 }
@@ -259,8 +257,6 @@ function renderizarNiveis() {
     niveis.classList.remove('hide');
     let btnNiveis = document.querySelector(".divBotaoFianlizarCriacao");
     btnNiveis.classList.remove('hide');
-    let box = document.querySelector(".box");
-    box.classList.add('hide');
 }
 
 function quizzFinalizado() {
@@ -468,6 +464,7 @@ function validarTitulo(campos) {
 function criarDivPerguntas(i) {
     if (i === 1) {
         divPerguntas.innerHTML += `
+            <h3>Crie suas perguntas</h3>
             `;
     }
 

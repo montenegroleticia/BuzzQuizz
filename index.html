@@ -50,45 +50,55 @@
 
         <!-- INICIO TELA 3  -->
         <div class="tela03 hide">
-            <div class="divTitulo">
-                <h3>Comece pelo começo</h3>
-                <div class="formularioTitulo">
-                    <input type="text" class="tituloQuizz" placeholder="Título do seu quizz ">
-                    <input type="text" class="urlTituloQuizz" placeholder="URL da imagem do seu quizz">
-                    <input type="text" class="quantPerguntasQuizz" placeholder="Quantidade de perguntas do quizz">
-                    <input type="text" class="quantNiveisQuizz" placeholder="Quantidade de níveis do quizz ">
+            <section>
+                <div class="divTitulo">
+                    <h3>Comece pelo começo</h3>
+                    <div class="formularioTitulo">
+                        <input type="text" class="tituloQuizz" placeholder="Título do seu quizz ">
+                        <input type="text" class="urlTituloQuizz" placeholder="URL da imagem do seu quizz">
+                        <input type="text" class="quantPerguntasQuizz" placeholder="Quantidade de perguntas do quizz">
+                        <input type="text" class="quantNiveisQuizz" placeholder="Quantidade de níveis do quizz ">
+                    </div>
+                    <div class="barra"></div>
+                    <button class="btn_ProsseguirParaPerguntas" onclick="prosseguirParaPerguntas()">prosseguir para
+                        perguntas</button>
+                </div>
+            </section>
+            <section>
+
+                <div class="perguntas hide">
+
+                </div>
+
+                <div class="divButton hide"><button class="btn_prosseguirParaNiveis" onclick="validar_Perguntas()">
+                        Prosseguir pra criar níveis </button></div>
+
+                <div class="barra"></div>
+
+                <div class="niveis hide">
+
+
+                </div>
+                <div class="divBotaoFianlizarCriacao hide">
+                    <button class="btn_finalizarCriacaoDeQuizz" onClick="quizzFinalizado()"> Finalizar Quizz </button>
                 </div>
                 <div class="barra"></div>
-                <button class="btn_ProsseguirParaPerguntas" onclick="prosseguirParaPerguntas()">
-                    Prosseguir para perguntas
-                </button>
-            </div>
-            <div class="box hide">
-                <p>Crie suas perguntas</p>
-                <div class="perguntas"></div>
-                <div class="divButton hide">
-                    <button class="btn_prosseguirParaNiveis" onclick="validar_Perguntas()">
-                        Prosseguir pra criar níveis 
-                    </button>
-                </div>
-            </div>
-            <div class="niveis hide">
-                <div class="divBotaoFianlizarCriacao hide">
-                    <button class="btn_finalizarCriacaoDeQuizz" onClick="quizzFinalizado()"> 
-                        Finalizar Quizz 
-                    </button>
-                </div>
-            <div class="finalizado hide">
+            </section>
+
+
+            <section class="finalizado hide">
                 <h3>Seu Quizz está pronto</h3>
+
                 <div class="QuizzCard"></div>
-                <button class="btn_AcessarQuizz"> Acessar Quizz </button>
+                <button class="btn_AcessarQuizz" onclick="quizzSelecionado(this)"> Acessar Quizz </button>
+
                 <a>
                     <div class="div_voltarAoInicio" onclick="voltarHome()">
                         Voltar pra home
                     </div>
                 </a>
-            </div>
-            </div>
+
+            </section>
         </div>
         <!-- FIM DA TELA 3-->
 
