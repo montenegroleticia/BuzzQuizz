@@ -236,7 +236,7 @@ function criarQuizz() {
     tela03.classList.remove('hide');
 }
 
-// Intereção tela 03 
+// Interação tela 03 
 function renderizarPerguntas() {
 
     let btnPerguntas = document.querySelector(".divButton");
@@ -245,6 +245,8 @@ function renderizarPerguntas() {
     titulo.classList.add('hide');
     let perguntas = document.querySelector(".perguntas");
     perguntas.classList.remove('hide');
+    let box = document.querySelector(".box");
+    box.classList.remove('hide');
 
 
 }
@@ -464,7 +466,6 @@ function validarTitulo(campos) {
 function criarDivPerguntas(i) {
     if (i === 1) {
         divPerguntas.innerHTML += `
-            <h3>Crie suas perguntas</h3>
             `;
     }
 
