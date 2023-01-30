@@ -1,10 +1,10 @@
 // Array que tem que ser inserido as informações do novo Quizz feito pelo usuário
-let quizz = {
-    title: "",
-    image: "",
-    questions: [],
-    levels: []
-}
+let quizz = [
+    {title: ""},
+    {image: ""},
+    {questions: },
+    {levels: }
+];
 
 let quizzAxios = new Object;
 let formulario = document.querySelector(".formulario");
@@ -719,12 +719,18 @@ function cadastrarNiveisNoQuizz(index) {
 
 // Enviar quizzes do usuário para a página home
 
-function colocarQuizzNoHome(dadosDeserializados) {
+function colocarQuizzNoHome() {
+
+
     const semQuizzes = document.querySelector(".criacao-quizzes");
     semQuizzes.classList.add("hide");
     const quizzesCriados = document.querySelector(".quizzes-criados");
     quizzesCriados.classList.remove("hide");
 
+
+    const quizzSerializada = localStorage.getItem('quizzesUsuario');
+    const dadosDeserializados = JSON.parse(quizzSerializada);
+    console.log(dadosDeserializados);
     const quizzUsuario = document.querySelector('.criados');
     quizzUsuario.innerHTML = '';
     for (let index = 0; index < dadosDeserializados.data.length; index++) {
@@ -744,9 +750,9 @@ function colocarQuizzNoHome(dadosDeserializados) {
 function enviarQuizzHome(resposta) {
     console.log("deu bom!");
     console.log(resposta);
-    const quizzSerializada = localStorage.getItem(resposta.data[index].id);
-    const dadosDeserializados = JSON.parse(quizzSerializada);
-    colocarQuizzNoHome(dadosDeserializados);
+    const dadosSerializado = JSON.stringify(resposta);
+    localStorage.setItem('quizzesUsuario', dadosSerializado);
+    colocarQuizzNoHome();
 }
 
 function naoEnviou(erro) {
@@ -755,10 +761,7 @@ function naoEnviou(erro) {
 }
 
 function postQuizzAxios() {
-    const dadosSerializado = JSON.stringify(quizz);
-    localStorage.setItem(quizz);
-
-    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, dadosSerializado);
+    const promese = axios.post(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`, quizz);
     promese.then(enviarQuizzHome);
     promese.catch(naoEnviou);
 }
