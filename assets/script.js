@@ -671,7 +671,7 @@ function verificaVinteCaracteres(string) {
         return true;
     return false;
 }
-
+/*
 function finalizarCriacaoQuizz() {
     //debugger;  
 
@@ -695,6 +695,7 @@ function finalizarCriacaoQuizz() {
         voltarHome();
     }
 }
+*/
 function cadastrarNiveisNoQuizz(index) {
     //debugger;
     const blocoNivel = document.getElementById(`nivel${index}`);
