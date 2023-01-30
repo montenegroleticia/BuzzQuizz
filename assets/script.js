@@ -31,7 +31,14 @@ function carregarQuizz(resposta) {
 
     for (let index = 0; index < resposta.data.length; index++) {
 
-        if (arr[index] !== resposta.data[index].id) {
+        let cond = true;
+
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i] === resposta.data[index].id)
+                cond = false;
+        }
+
+        if (cond) {
             const id = resposta.data[index].id;
             const title = resposta.data[index].title;
             const image = resposta.data[index].image;
